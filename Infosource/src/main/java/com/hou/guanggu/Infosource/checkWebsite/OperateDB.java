@@ -3,7 +3,6 @@ package com.hou.guanggu.Infosource.checkWebsite;
 /**
  * @author houweitao
  * @date 2015年12月28日 下午4:16:02
- * jdbc:mysql://119.254.110.32:3001/docdb ，用户名peony，密码UdenTan#23851
  */
 
 public class OperateDB {
