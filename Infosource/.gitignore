@@ -1,5 +1,6 @@
 /target/
 
-/resources
+/recources
 
-*.properities
+*.properties
+*.log
