@@ -1,0 +1,1191 @@
+2015-09-23 12:57:57.688  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.huaihai.tv/news/head/...: [i-188246] http://www.huaihai.tv/news/head/
+2015-09-23 12:57:57.694  WARN 28465 --- [crawler-19] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:57.694  INFO 28465 --- [crawler-19] com.peony.crawler.WebCrawler             : start processing http://www.hljwst.gov.cn/Others/DTY/Gzdt1.aspx...: [i-36585] http://www.hljwst.gov.cn/Others/DTY/Gzdt1.aspx
+2015-09-23 12:57:57.737  WARN 28465 --- [crawler-16] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:57.737  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : start processing http://bbs.703804.com/forum.php?mod=forumdisplay&fid=113&page=1&mobile=no...: [i-15872] http://bbs.703804.com/forum.php?mod=forumdisplay&fid=113&page=1&mobile=no
+2015-09-23 12:57:57.905  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 4 new documents: [i-82011] http://stockpage.10jqka.com.cn/
+2015-09-23 12:57:57.905  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://stockpage.10jqka.com.cn/': running time (millis) = 420
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00414  099%  Crawl & Parse
+00000  000%  Cache New Seeds
+00006  001%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:58.004  INFO 28465 --- [crawler-17] o.apache.http.impl.execchain.RetryExec   : I/O exception (java.net.SocketException) caught when processing request to {}->http://app.my0538.com:80: Connection reset
+2015-09-23 12:57:58.004  INFO 28465 --- [crawler-17] o.apache.http.impl.execchain.RetryExec   : Retrying request to {}->http://app.my0538.com:80
+2015-09-23 12:57:58.006  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://www.newsus.com.cn/wangwen/donewsone.asp?bookyjfl=9...: [i-183789] http://www.newsus.com.cn/wangwen/donewsone.asp?bookyjfl=9
+2015-09-23 12:57:58.062  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : find 0 out of 45 new documents: [i-9279] http://liaoning.lnd.com.cn/node_90505.htm
+2015-09-23 12:57:58.062  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://liaoning.lnd.com.cn/node_90505.htm': running time (millis) = 396
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00180  045%  Crawl & Parse
+00000  000%  Cache New Seeds
+00216  055%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:58.163  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://www.zmdtvw.cn/e/action/ListInfo/?classid=184...: [i-42437] http://www.zmdtvw.cn/e/action/ListInfo/?classid=184
+^Z
+[1]+  Stopped                 tail -f logs/spring.log
+[cruser@i-zmnuoy1b v4]$ fd
+-bash: fd: command not found
+[cruser@i-zmnuoy1b v4]$ fg
+tail -f logs/spring.log
+2015-09-23 12:57:58.442  WARN 28465 --- [crawler-2] o.a.h.c.protocol.ResponseProcessCookies  : Invalid cookie header: "Set-Cookie: safedog-flow-item=400C5C89C5C86B94487D7331E426AA84; expires=Wen, 23-Sep-2015 16:00:00 GMT; domain=my0832.com; path=/". Unable to parse expires attribute: Wen, 23-Sep-2015 16:00:00 GMT
+2015-09-23 12:57:58.509  INFO 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : find 0 out of 1 new documents: [s-713-265982] http://www.my0832.com/bbs/search.asp?stype=s3&keyword=%CC%DA%B8%F1%C0%EF%C9%B3%C4%AE&Page=1
+2015-09-23 12:57:58.509  INFO 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.my0832.com/bbs/search.asp?stype=s3&keyword=%CC%DA%B8%F1%C0%EF%C9%B3%C4%AE&Page=1': running time (millis) = 1289
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01286  100%  Crawl & Parse
+00000  000%  Cache New Seeds
+00003  000%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:58.533  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=B-2LG5zukLM69-vah60eUcKkeVVvDoGI-FP7ABcUM6bnSSb2lHnkQ1CWOcY-Xmk_qEeINMpikPGbH3G8zO9RPJu5FbAy2rnFZGJp6-CLSUS': running time (millis) = 2025
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+02022  100%  Crawl & Parse
+00003  000%  Document Persist
+
+2015-09-23 12:57:58.603 ERROR 28465 --- [crawler-13] c.peony.crawler.helper.BasicCrawlHelper  : exception raises:
+
+java.net.SocketTimeoutException: Read timed out
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:152)
+        at java.net.SocketInputStream.read(SocketInputStream.java:122)
+        at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+        at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+        at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+        at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+        at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+        at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+        at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+        at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+        at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+        at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+        at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+        at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+        at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+        at com.peony.crawler.helper.BasicCrawlHelper.crawlWebPage(BasicCrawlHelper.java:105)
+        at com.peony.crawler.proxy.CrawlHelperLoggingProxy.crawlWebPage(CrawlHelperLoggingProxy.java:29)
+        at com.peony.crawler.WebCrawler.crawl(WebCrawler.java:74)
+        at com.peony.crawler.WebCrawler.run(WebCrawler.java:43)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+
+2015-09-23 12:57:58.604  WARN 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : Failed to access: [s-230-53858] http://s.rednet.cn/?q=%E4%BA%91%E5%8D%97&date_range=4&orderby=1&page=1&page_size=10&scope=4
+
+java.net.SocketTimeoutException: Read timed out
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:152)
+        at java.net.SocketInputStream.read(SocketInputStream.java:122)
+        at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+        at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+        at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+        at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+        at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+        at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+        at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+        at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+        at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+        at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+        at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+        at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+        at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+        at com.peony.crawler.helper.BasicCrawlHelper.crawlWebPage(BasicCrawlHelper.java:105)
+        at com.peony.crawler.proxy.CrawlHelperLoggingProxy.crawlWebPage(CrawlHelperLoggingProxy.java:29)
+        at com.peony.crawler.WebCrawler.crawl(WebCrawler.java:74)
+        at com.peony.crawler.WebCrawler.run(WebCrawler.java:43)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+
+2015-09-23 12:57:58.604  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://s.rednet.cn/?q=%E4%BA%91%E5%8D%97&date_range=4&orderby=1&page=1&page_size=10&scope=4': running time (millis) = 10275
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+10275  100%  Crawl & Parse
+
+2015-09-23 12:57:58.624  INFO 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : start processing http://news.21cn.com/world/guojisaomiao/a/2015/0923/10/30071705.shtml...: [i-14965] http://news.21cn.com/world/guojisaomiao/a/2015/0923/10/30071705.shtml
+2015-09-23 12:57:58.635  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=3ecx9uV8MM05Pnrr9YVGKONTBZnr0s_0sZ4tlGbqb8ZGNWOqRo7xdzZ-_B0w4MVd1ixt64w70i3U665tHbSHVUIOnXMmBqsRQuMS4D0oa5K...: [s-479-172144] http://www.baidu.com/link?url=3ecx9uV8MM05Pnrr9YVGKONTBZnr0s_0sZ4tlGbqb8ZGNWOqRo7xdzZ-_B0w4MVd1ixt64w70i3U665tHbSHVUIOnXMmBqsRQuMS4D0oa5K
+2015-09-23 12:57:58.678  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : find 0 out of 1004 new documents: [i-130144] http://sx.sina.com.cn/finance/qyjj/list.html
+2015-09-23 12:57:58.678  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://sx.sina.com.cn/finance/qyjj/list.html': running time (millis) = 3993
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+02427  061%  Crawl & Parse
+00000  000%  Cache New Seeds
+01566  039%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:58.705  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://news.baidu.com/ns?word=%E8%A5%BF%E5%AE%81%20site%3A163.com%2Bcont:1996830746&same=2&tn=news&fm=sd&bt=0&cl=2&ct=0&et=0&pn=0&rn=50...: [s-41-4348] http://news.baidu.com/ns?word=%E8%A5%BF%E5%AE%81%20site%3A163.com%2Bcont:1996830746&same=2&tn=news&fm=sd&bt=0&cl=2&ct=0&et=0&pn=0&rn=50
+2015-09-23 12:57:58.769  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : find 0 out of 73 new documents: [i-42437] http://www.zmdtvw.cn/e/action/ListInfo/?classid=184
+2015-09-23 12:57:58.769  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.zmdtvw.cn/e/action/ListInfo/?classid=184': running time (millis) = 606
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00502  083%  Crawl & Parse
+00000  000%  Cache New Seeds
+00104  017%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:58.779  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://club.autohome.com.cn/bbs/thread-a-777-45361809-1.html...: [i-37771] http://club.autohome.com.cn/bbs/thread-a-777-45361809-1.html
+2015-09-23 12:57:58.796  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : find 0 out of 85 new documents: [i-12898] http://bbs.clzg.cn/forum-317-1.html
+2015-09-23 12:57:58.796  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://bbs.clzg.cn/forum-317-1.html': running time (millis) = 1422
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00917  064%  Crawl & Parse
+00000  000%  Cache New Seeds
+00505  036%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:58.870  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://edu.gmw.cn/newspaper/2015-09/23/content_109381441.htm...: [s-197-42588] http://edu.gmw.cn/newspaper/2015-09/23/content_109381441.htm
+2015-09-23 12:57:58.881  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:57:58.897  WARN 28465 --- [crawler-5] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:58.897  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=3ecx9uV8MM05Pnrr9YVGKK8vXby40uYADbLoWgp3K4UmV3yzuY91l6kr6-gmPN_ICvRzDavJHvoSd9iiR_LMXK...: [s-570-208849] http://www.baidu.com/link?url=3ecx9uV8MM05Pnrr9YVGKK8vXby40uYADbLoWgp3K4UmV3yzuY91l6kr6-gmPN_ICvRzDavJHvoSd9iiR_LMXK
+2015-09-23 12:57:58.945  WARN 28465 --- [crawler-2] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:57:58.971  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : find 0 out of 40 new documents: [i-188246] http://www.huaihai.tv/news/head/
+2015-09-23 12:57:58.971  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.huaihai.tv/news/head/': running time (millis) = 1283
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01193  093%  Crawl & Parse
+00000  000%  Cache New Seeds
+00090  007%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:59.042  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:57:59.044  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=3ecx9uV8MM05Pnrr9YVGKONTBZnr0s_0sZ4tlGbqb8ZGNWOqRo7xdzZ-_B0w4MVd1ixt64w70i3U665tHbSHVUIOnXMmBqsRQuMS4D0oa5K': running time (millis) = 407
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00407  100%  Crawl & Parse
+
+2015-09-23 12:57:59.072  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=tq14q9JeUPMemtZd1tPjxaOwS-YLwqex1c4OZx7Kxa8sZsbs6aekWK-B11d0gRKD...: [s-71-8359] http://www.baidu.com/link?url=tq14q9JeUPMemtZd1tPjxaOwS-YLwqex1c4OZx7Kxa8sZsbs6aekWK-B11d0gRKD
+2015-09-23 12:57:59.121  WARN 28465 --- [crawler-2] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SaveLog]
+2015-09-23 12:57:59.123  INFO 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://news.21cn.com/world/guojisaomiao/a/2015/0923/10/30071705.shtml': running time (millis) = 499
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00321  064%  Crawl & Parse
+00178  036%  Document Persist
+
+2015-09-23 12:57:59.145  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.145  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=jhS9on4juX7xiOdhlgUXM94b_4iFDonRdKBCPAs2y5xh2C6uLqxrClZUD0CjG2TZMhDTwzwwS0akUXXgnzjjvdEvh8rHgya_0MifzAq4fJ7...: [s-572-209404] http://www.baidu.com/link?url=jhS9on4juX7xiOdhlgUXM94b_4iFDonRdKBCPAs2y5xh2C6uLqxrClZUD0CjG2TZMhDTwzwwS0akUXXgnzjjvdEvh8rHgya_0MifzAq4fJ7
+2015-09-23 12:57:59.148  WARN 28465 --- [crawler-13] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:57:59.155  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : find 0 out of 3 new documents: [s-41-4348] http://news.baidu.com/ns?word=%E8%A5%BF%E5%AE%81%20site%3A163.com%2Bcont:1996830746&same=2&tn=news&fm=sd&bt=0&cl=2&ct=0&et=0&pn=0&rn=50
+2015-09-23 12:57:59.155  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://news.baidu.com/ns?word=%E8%A5%BF%E5%AE%81%20site%3A163.com%2Bcont:1996830746&same=2&tn=news&fm=sd&bt=0&cl=2&ct=0&et=0&pn=0&rn=50': running time (millis) = 450
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00443  098%  Crawl & Parse
+00000  000%  Cache New Seeds
+00007  002%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:59.225  INFO 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : start processing http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=526...: [i-90385] http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=526
+2015-09-23 12:57:59.257  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=528...: [i-90385] http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=528
+2015-09-23 12:57:59.298  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://edu.gmw.cn/newspaper/2015-09/23/content_109381441.htm': running time (millis) = 428
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00421  098%  Crawl & Parse
+00007  002%  Document Persist
+
+2015-09-23 12:57:59.362  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : find 0 out of 191 new documents: [i-15872] http://bbs.703804.com/forum.php?mod=forumdisplay&fid=113&page=1&mobile=no
+2015-09-23 12:57:59.362  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://bbs.703804.com/forum.php?mod=forumdisplay&fid=113&page=1&mobile=no': running time (millis) = 1625
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01269  078%  Crawl & Parse
+00000  000%  Cache New Seeds
+00356  022%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:59.384  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:57:59.386  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://club.autohome.com.cn/bbs/thread-a-777-45361809-1.html': running time (millis) = 607
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00605  100%  Crawl & Parse
+00002  000%  Document Persist
+
+2015-09-23 12:57:59.400  WARN 28465 --- [crawler-1] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.400  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://www.360qc.com/news/NewInformation/Fri%20Aug%2021%2017:08:30%20CST%202015/72000.html...: [i-31473] http://www.360qc.com/news/NewInformation/Fri%20Aug%2021%2017:08:30%20CST%202015/72000.html
+2015-09-23 12:57:59.437  WARN 28465 --- [crawler-2] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:57:59.439  WARN 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-90385] http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=526
+2015-09-23 12:57:59.439  INFO 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=526': running time (millis) = 214
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00214  100%  Crawl & Parse
+
+2015-09-23 12:57:59.464  WARN 28465 --- [crawler-16] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.464  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : start processing http://www.360qc.com/news/NewRealShot/Tue%20Sep%2001%2016:09:45%20CST%202015/53354.html...: [i-31473] http://www.360qc.com/news/NewRealShot/Tue%20Sep%2001%2016:09:45%20CST%202015/53354.html
+2015-09-23 12:57:59.487  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.487  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://www.360qc.com/news/NewTestScore/Tue%20Apr%2015%2010:04:59%20CST%202014/13560.html...: [i-31473] http://www.360qc.com/news/NewTestScore/Tue%20Apr%2015%2010:04:59%20CST%202014/13560.html
+2015-09-23 12:57:59.556  INFO 28465 --- [crawler-2] com.peony.crawler.WebCrawler             : start processing http://peixun.eol.cn/3605020002/...: [s-529-192112] http://peixun.eol.cn/3605020002/
+2015-09-23 12:57:59.560  WARN 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-31473] http://www.360qc.com/news/NewInformation/Fri%20Aug%2021%2017:08:30%20CST%202015/72000.html
+2015-09-23 12:57:59.560  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.360qc.com/news/NewInformation/Fri%20Aug%2021%2017:08:30%20CST%202015/72000.html': running time (millis) = 160
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00160  100%  Crawl & Parse
+
+2015-09-23 12:57:59.639  WARN 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-90385] http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=528
+2015-09-23 12:57:59.640  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://news.prcsteel.com/yanjiuzhongxin/View/ArticleDetails.aspx?Id=528': running time (millis) = 382
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00382  100%  Crawl & Parse
+
+2015-09-23 12:57:59.642  WARN 28465 --- [crawler-16] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:57:59.644  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:57:59.645  WARN 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-31473] http://www.360qc.com/news/NewRealShot/Tue%20Sep%2001%2016:09:45%20CST%202015/53354.html
+2015-09-23 12:57:59.645  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.360qc.com/news/NewRealShot/Tue%20Sep%2001%2016:09:45%20CST%202015/53354.html': running time (millis) = 181
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00181  100%  Crawl & Parse
+
+2015-09-23 12:57:59.646  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=jhS9on4juX7xiOdhlgUXM94b_4iFDonRdKBCPAs2y5xh2C6uLqxrClZUD0CjG2TZMhDTwzwwS0akUXXgnzjjvdEvh8rHgya_0MifzAq4fJ7': running time (millis) = 501
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00500  100%  Crawl & Parse
+00001  000%  Document Persist
+
+2015-09-23 12:57:59.648  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:57:59.648  WARN 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-31473] http://www.360qc.com/news/NewTestScore/Tue%20Apr%2015%2010:04:59%20CST%202014/13560.html
+2015-09-23 12:57:59.648  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.360qc.com/news/NewTestScore/Tue%20Apr%2015%2010:04:59%20CST%202014/13560.html': running time (millis) = 161
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00161  100%  Crawl & Parse
+
+2015-09-23 12:57:59.661  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://gx.tynews.com.cn/msm.html...: [i-92771] http://gx.tynews.com.cn/msm.html
+2015-09-23 12:57:59.721  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:57:59.746  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : start processing http://gaokao.eol.cn/...: [i-152305] http://gaokao.eol.cn/
+2015-09-23 12:57:59.747  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://www.maidi.me/forum-5-1.html...: [i-20934] http://www.maidi.me/forum-5-1.html
+2015-09-23 12:57:59.747  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.748  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://club.kf.cn/forum.php?mod=redirect&tid=1015288&goto=lastpost...: [i-43249] http://club.kf.cn/forum.php?mod=redirect&tid=1015288&goto=lastpost
+2015-09-23 12:57:59.750  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 21 new documents: [i-183789] http://www.newsus.com.cn/wangwen/donewsone.asp?bookyjfl=9
+2015-09-23 12:57:59.750  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.newsus.com.cn/wangwen/donewsone.asp?bookyjfl=9': running time (millis) = 1744
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01715  098%  Crawl & Parse
+00000  000%  Cache New Seeds
+00029  002%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:57:59.752  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.752  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://www.ocn.com.cn/dm/dm010zhuangshicailiao.htm...: [i-70519] http://www.ocn.com.cn/dm/dm010zhuangshicailiao.htm
+2015-09-23 12:57:59.803  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=3ecx9uV8MM05Pnrr9YVGKK8vXby40uYADbLoWgp3K4UmV3yzuY91l6kr6-gmPN_ICvRzDavJHvoSd9iiR_LMXK': running time (millis) = 906
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00900  099%  Crawl & Parse
+00006  001%  Document Persist
+
+2015-09-23 12:57:59.852  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.852  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://www.coaledu.cn/search_info.php?s=%E6%B5%B7%E4%B8%9C&find=%E6%90%9C%E7%B4%A2&mysearch=info&page=1...: [s-333-113185] http://www.coaledu.cn/search_info.php?s=%E6%B5%B7%E4%B8%9C&find=%E6%90%9C%E7%B4%A2&mysearch=info&page=1
+2015-09-23 12:57:59.904  WARN 28465 --- [crawler-5] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:57:59.904  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : start processing http://www.hongduhe.com/forum.php?mod=forumdisplay&fid=18&orderby=lastpost&filter=dateline...: [i-167241] http://www.hongduhe.com/forum.php?mod=forumdisplay&fid=18&orderby=lastpost&filter=dateline
+2015-09-23 12:57:59.943  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=tq14q9JeUPMemtZd1tPjxaOwS-YLwqex1c4OZx7Kxa8sZsbs6aekWK-B11d0gRKD': running time (millis) = 870
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00868  100%  Crawl & Parse
+00002  000%  Document Persist
+
+2015-09-23 12:57:59.987  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:00.044  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:00.044  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.chinafood365.com/depth/search.php?kw=%CB%FE%B3%C7&fields=0&catid=0&order=0&x=42&y=0...: [s-678-251675] http://www.chinafood365.com/depth/search.php?kw=%CB%FE%B3%C7&fields=0&catid=0&order=0&x=42&y=0
+2015-09-23 12:58:00.088  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : find 0 out of 76 new documents: [i-70519] http://www.ocn.com.cn/dm/dm010zhuangshicailiao.htm
+2015-09-23 12:58:00.088  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.ocn.com.cn/dm/dm010zhuangshicailiao.htm': running time (millis) = 335
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00235  070%  Crawl & Parse
+00000  000%  Cache New Seeds
+00100  030%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:00.184  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:00.189  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:00.189  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://www.pyzxw.net/news/...: [i-42427] http://www.pyzxw.net/news/
+2015-09-23 12:58:00.271  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 40 new documents: [s-333-113185] http://www.coaledu.cn/search_info.php?s=%E6%B5%B7%E4%B8%9C&find=%E6%90%9C%E7%B4%A2&mysearch=info&page=1
+2015-09-23 12:58:00.271  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.coaledu.cn/search_info.php?s=%E6%B5%B7%E4%B8%9C&find=%E6%90%9C%E7%B4%A2&mysearch=info&page=1': running time (millis) = 419
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00332  079%  Crawl & Parse
+00000  000%  Cache New Seeds
+00087  021%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:00.331  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : find 0 out of 77 new documents: [i-20934] http://www.maidi.me/forum-5-1.html
+2015-09-23 12:58:00.332  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.maidi.me/forum-5-1.html': running time (millis) = 584
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00518  089%  Crawl & Parse
+00000  000%  Cache New Seeds
+00066  011%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:00.373  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://search.ccb.com/ESSearchApplication/search.do?button=&command=search&extendedHighlighting=Yes&pageNumber=0&q=%E5%B7%B4%E4%B8%AD&resultsRange=10&targetPage=resultsPage...: [s-789-297258] http://search.ccb.com/ESSearchApplication/search.do?button=&command=search&extendedHighlighting=Yes&pageNumber=0&q=%E5%B7%B4%E4%B8%AD&resultsRange=10&targetPage=resultsPage
+2015-09-23 12:58:00.433  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://www.lnrd.gov.cn/channels/55.html...: [i-126964] http://www.lnrd.gov.cn/channels/55.html
+2015-09-23 12:58:00.455  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:00.486  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : find 0 out of 26 new documents: [s-678-251675] http://www.chinafood365.com/depth/search.php?kw=%CB%FE%B3%C7&fields=0&catid=0&order=0&x=42&y=0
+2015-09-23 12:58:00.486  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.chinafood365.com/depth/search.php?kw=%CB%FE%B3%C7&fields=0&catid=0&order=0&x=42&y=0': running time (millis) = 442
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00413  093%  Crawl & Parse
+00000  000%  Cache New Seeds
+00029  007%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:00.587  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.0515yc.cn/newsyc/folder57/...: [i-81715] http://www.0515yc.cn/newsyc/folder57/
+2015-09-23 12:58:00.592  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:00.592  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 0 new documents: [s-789-297258] http://search.ccb.com/ESSearchApplication/search.do?button=&command=search&extendedHighlighting=Yes&pageNumber=0&q=%E5%B7%B4%E4%B8%AD&resultsRange=10&targetPage=resultsPage
+2015-09-23 12:58:00.593  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://search.ccb.com/ESSearchApplication/search.do?button=&command=search&extendedHighlighting=Yes&pageNumber=0&q=%E5%B7%B4%E4%B8%AD&resultsRange=10&targetPage=resultsPage': running time (millis) = 219
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00219  100%  Crawl & Parse
+00000  000%  Cache New Seeds
+00000  000%  Cache New Docs
+
+2015-09-23 12:58:00.597  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : find 0 out of 152 new documents: [i-42427] http://www.pyzxw.net/news/
+2015-09-23 12:58:00.598  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.pyzxw.net/news/': running time (millis) = 408
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00259  063%  Crawl & Parse
+00000  000%  Cache New Seeds
+00149  037%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:00.637 ERROR 28465 --- [crawler-4] c.peony.crawler.helper.BasicCrawlHelper  : exception raises:
+
+java.net.SocketTimeoutException: Read timed out
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:152)
+        at java.net.SocketInputStream.read(SocketInputStream.java:122)
+        at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+        at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+        at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+        at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+        at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+        at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+        at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+        at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+        at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+        at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+        at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+        at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+        at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+        at com.peony.crawler.helper.BasicCrawlHelper.crawlWebPage(BasicCrawlHelper.java:105)
+        at com.peony.crawler.proxy.CrawlHelperLoggingProxy.crawlWebPage(CrawlHelperLoggingProxy.java:29)
+        at com.peony.crawler.WebCrawler.crawl(WebCrawler.java:74)
+        at com.peony.crawler.WebCrawler.run(WebCrawler.java:43)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+
+2015-09-23 12:58:00.638  WARN 28465 --- [crawler-4] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [ExceptionLog]
+2015-09-23 12:58:00.638  WARN 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : Failed to access: [i-42383] http://www.datongwang.cn/forum.php?mod=viewthread&tid=752832
+
+java.net.SocketTimeoutException: Read timed out
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:152)
+        at java.net.SocketInputStream.read(SocketInputStream.java:122)
+        at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+        at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+        at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+        at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+        at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+        at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+        at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+        at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+        at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+        at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+        at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+        at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+        at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+        at com.peony.crawler.helper.BasicCrawlHelper.crawlWebPage(BasicCrawlHelper.java:105)
+        at com.peony.crawler.proxy.CrawlHelperLoggingProxy.crawlWebPage(CrawlHelperLoggingProxy.java:29)
+        at com.peony.crawler.WebCrawler.crawl(WebCrawler.java:74)
+        at com.peony.crawler.WebCrawler.run(WebCrawler.java:43)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+
+2015-09-23 12:58:00.638  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.datongwang.cn/forum.php?mod=viewthread&tid=752832': running time (millis) = 10473
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+10473  100%  Crawl & Parse
+
+2015-09-23 12:58:00.694  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://sd.people.com.cn/...: [i-150700] http://sd.people.com.cn/
+2015-09-23 12:58:00.699  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:00.699  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://bbs.we54.com/forum-898-1.html...: [i-20161] http://bbs.we54.com/forum-898-1.html
+2015-09-23 12:58:00.714  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : find 0 out of 40 new documents: [i-167241] http://www.hongduhe.com/forum.php?mod=forumdisplay&fid=18&orderby=lastpost&filter=dateline
+2015-09-23 12:58:00.714  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.hongduhe.com/forum.php?mod=forumdisplay&fid=18&orderby=lastpost&filter=dateline': running time (millis) = 810
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00766  095%  Crawl & Parse
+00000  000%  Cache New Seeds
+00044  005%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:00.718 ERROR 28465 --- [crawler-9] c.peony.crawler.helper.BasicCrawlHelper  : exception raises:
+
+java.net.SocketTimeoutException: Read timed out
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:152)
+        at java.net.SocketInputStream.read(SocketInputStream.java:122)
+        at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+        at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+        at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+        at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+        at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+        at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+        at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+        at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+        at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+        at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+        at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+        at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+        at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+        at com.peony.crawler.helper.BasicCrawlHelper.crawlWebPage(BasicCrawlHelper.java:105)
+        at com.peony.crawler.proxy.CrawlHelperLoggingProxy.crawlWebPage(CrawlHelperLoggingProxy.java:29)
+        at com.peony.crawler.WebCrawler.crawl(WebCrawler.java:74)
+        at com.peony.crawler.WebCrawler.run(WebCrawler.java:43)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+
+2015-09-23 12:58:00.719  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [ExceptionLog]
+2015-09-23 12:58:00.719  WARN 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : Failed to access: [i-42383] http://www.datongwang.cn/forum.php?mod=viewthread&tid=752852
+
+java.net.SocketTimeoutException: Read timed out
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:152)
+        at java.net.SocketInputStream.read(SocketInputStream.java:122)
+        at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+        at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+        at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+        at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+        at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+        at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+        at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+        at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+        at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+        at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+        at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+        at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+        at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+        at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+        at com.peony.crawler.helper.BasicCrawlHelper.crawlWebPage(BasicCrawlHelper.java:105)
+        at com.peony.crawler.proxy.CrawlHelperLoggingProxy.crawlWebPage(CrawlHelperLoggingProxy.java:29)
+        at com.peony.crawler.WebCrawler.crawl(WebCrawler.java:74)
+        at com.peony.crawler.WebCrawler.run(WebCrawler.java:43)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+
+2015-09-23 12:58:00.719  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.datongwang.cn/forum.php?mod=viewthread&tid=752852': running time (millis) = 10463
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+10463  100%  Crawl & Parse
+
+2015-09-23 12:58:00.739  WARN 28465 --- [crawler-4] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:00.740  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : start processing http://www.szlz.gov.cn/html/lzyw/...: [i-36198] http://www.szlz.gov.cn/html/lzyw/
+2015-09-23 12:58:00.815  WARN 28465 --- [crawler-5] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:00.815  INFO 28465 --- [crawler-5] com.peony.crawler.WebCrawler             : start processing http://old.yzdzw.gov.cn/ztpd/yzwmjs.htm...: [i-69228] http://old.yzdzw.gov.cn/ztpd/yzwmjs.htm
+2015-09-23 12:58:00.820  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:00.820  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : start processing http://tieba.baidu.com/f?kw=%E9%9F%A9%E5%9F%8E&ie=utf-8...: [i-29954] http://tieba.baidu.com/f?kw=%E9%9F%A9%E5%9F%8E&ie=utf-8
+2015-09-23 12:58:00.858  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : find 0 out of 594 new documents: [i-152305] http://gaokao.eol.cn/
+2015-09-23 12:58:00.858  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://gaokao.eol.cn/': running time (millis) = 1112
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00509  046%  Crawl & Parse
+00000  000%  Cache New Seeds
+00603  054%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:00.960  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : start processing http://www.hrxjbank.com.cn/69/78/content_157.html...: [i-82624] http://www.hrxjbank.com.cn/69/78/content_157.html
+2015-09-23 12:58:00.971  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : find 0 out of 19 new documents: [i-36198] http://www.szlz.gov.cn/html/lzyw/
+2015-09-23 12:58:00.971  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.szlz.gov.cn/html/lzyw/': running time (millis) = 231
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00208  090%  Crawl & Parse
+00000  000%  Cache New Seeds
+00023  010%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:01.075  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : start processing http://www.tianshui.com.cn/news/mj/...: [i-166215] http://www.tianshui.com.cn/news/mj/
+2015-09-23 12:58:01.098  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : find 0 out of 5 new documents: [i-82624] http://www.hrxjbank.com.cn/69/78/content_157.html
+2015-09-23 12:58:01.098  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.hrxjbank.com.cn/69/78/content_157.html': running time (millis) = 138
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00124  090%  Crawl & Parse
+00000  000%  Cache New Seeds
+00014  010%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:01.200  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : start processing http://media.baidu.com/redirect?source=pengpai&nid=14721084362345548320&pos=6&layout=4&token=da08cbd0f7811a26362c80abababaaaa&url=http%3A%2F%2Fwww.thepaper.cn%2Fbaidu.jsp%3Fcontid%3D1378220...: [i-145575] http://media.baidu.com/redirect?source=pengpai&nid=14721084362345548320&pos=6&layout=4&token=da08cbd0f7811a26362c80abababaaaa&url=http%3A%2F%2Fwww.thepaper.cn%2Fbaidu.jsp%3Fcontid%3D1378220
+2015-09-23 12:58:01.241  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SaveLog]
+2015-09-23 12:58:01.243  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.datongwang.cn/forum.php?mod=viewthread&tid=752848&extra=page%3D1': running time (millis) = 10997
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+10885  099%  Crawl & Parse
+00112  001%  Document Persist
+
+2015-09-23 12:58:01.346  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : start processing http://club.kdnet.net/dispbbs.asp?boardid=1&id=11180527...: [i-47003] http://club.kdnet.net/dispbbs.asp?boardid=1&id=11180527
+2015-09-23 12:58:01.381  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:01.394  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:01.453  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:01.471  WARN 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : Status code not acceptable: 400: [i-47003] http://club.kdnet.net/dispbbs.asp?boardid=1&id=11180527
+2015-09-23 12:58:01.471  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://club.kdnet.net/dispbbs.asp?boardid=1&id=11180527': running time (millis) = 125
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00125  100%  Crawl & Parse
+
+2015-09-23 12:58:01.477  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : find 0 out of 50 new documents: [i-81715] http://www.0515yc.cn/newsyc/folder57/
+2015-09-23 12:58:01.478  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.0515yc.cn/newsyc/folder57/': running time (millis) = 890
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00794  089%  Crawl & Parse
+00000  000%  Cache New Seeds
+00096  011%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:01.497  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://media.baidu.com/redirect?source=pengpai&nid=14721084362345548320&pos=6&layout=4&token=da08cbd0f7811a26362c80abababaaaa&url=http%3A%2F%2Fwww.thepaper.cn%2Fbaidu.jsp%3Fcontid%3D1378220': running time (millis) = 297
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00295  099%  Crawl & Parse
+00002  001%  Document Persist
+
+2015-09-23 12:58:01.573  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : start processing http://www.snkjb.com/Show/?22182=...: [i-84461] http://www.snkjb.com/Show/?22182=
+2015-09-23 12:58:01.579  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:01.579  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.snkjb.com/Show/?22183=...: [i-84461] http://www.snkjb.com/Show/?22183=
+2015-09-23 12:58:01.598  WARN 28465 --- [crawler-16] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:01.599  INFO 28465 --- [crawler-16] com.peony.crawler.WebCrawler             : start processing http://games.jydy.net/...: [i-20396] http://games.jydy.net/
+2015-09-23 12:58:01.709  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:01.716  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://club.kf.cn/forum.php?mod=redirect&tid=1015288&goto=lastpost': running time (millis) = 1968
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01961  100%  Crawl & Parse
+00007  000%  Document Persist
+
+2015-09-23 12:58:01.718  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 264 new documents: [i-150700] http://sd.people.com.cn/
+2015-09-23 12:58:01.718  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://sd.people.com.cn/': running time (millis) = 1024
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00700  068%  Crawl & Parse
+00000  000%  Cache New Seeds
+00324  032%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:01.761  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : find 0 out of 50 new documents: [i-29954] http://tieba.baidu.com/f?kw=%E9%9F%A9%E5%9F%8E&ie=utf-8
+2015-09-23 12:58:01.761  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://tieba.baidu.com/f?kw=%E9%9F%A9%E5%9F%8E&ie=utf-8': running time (millis) = 941
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00633  067%  Crawl & Parse
+00000  000%  Cache New Seeds
+00308  033%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:01.817  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:01.818  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://news.chinaso.com/dupsearch.htm?csData=-7980612133595769318&page=1...: [s-182-33861] http://news.chinaso.com/dupsearch.htm?csData=-7980612133595769318&page=1
+2015-09-23 12:58:01.819  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:01.819  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://hk.eastmoney.com/news/1532,20150923550604973.html...: [i-99408] http://hk.eastmoney.com/news/1532,20150923550604973.html
+2015-09-23 12:58:01.862  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:01.862  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : start processing http://szsd.sdchina.com/show/3515823.html...: [s-291-78771] http://szsd.sdchina.com/show/3515823.html
+2015-09-23 12:58:01.915  WARN 28465 --- [crawler-1] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:01.933  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:01.933  WARN 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : Status code not acceptable: 500: [i-84461] http://www.snkjb.com/Show/?22183=
+2015-09-23 12:58:01.933  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.snkjb.com/Show/?22183=': running time (millis) = 354
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00354  100%  Crawl & Parse
+
+2015-09-23 12:58:01.971  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:01.971  WARN 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : Status code not acceptable: 500: [i-84461] http://www.snkjb.com/Show/?22182=
+2015-09-23 12:58:01.971  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.snkjb.com/Show/?22182=': running time (millis) = 398
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00398  100%  Crawl & Parse
+
+2015-09-23 12:58:02.034  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:02.035  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=BWzaeAO2cGDzULNUPLDQQPmxKjE4oB7U_mPReTDSUw8KkftPyRBAh5pCpag4eJrP3SV8hqLrU6Qg598aidg-mq...: [s-479-172061] http://www.baidu.com/link?url=BWzaeAO2cGDzULNUPLDQQPmxKjE4oB7U_mPReTDSUw8KkftPyRBAh5pCpag4eJrP3SV8hqLrU6Qg598aidg-mq
+2015-09-23 12:58:02.037  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : find 10 out of 67 new documents: [i-92771] http://gx.tynews.com.cn/msm.html
+2015-09-23 12:58:02.037  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://gx.tynews.com.cn/msm.html': running time (millis) = 2376
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+02254  095%  Crawl & Parse
+00000  000%  Cache New Seeds
+00122  005%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:02.073  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:02.073  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=47ECoSblJ6zR-ibgxnhQMQDE33Fc1AG1Ox581stIGlGprDQjOcBH_PdcS8e2lspds1tAO6pO2cVBkcrdL8va2a...: [s-461-164570] http://www.baidu.com/link?url=47ECoSblJ6zR-ibgxnhQMQDE33Fc1AG1Ox581stIGlGprDQjOcBH_PdcS8e2lspds1tAO6pO2cVBkcrdL8va2a
+2015-09-23 12:58:02.114  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://szsd.sdchina.com/show/3515823.html': running time (millis) = 251
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00250  100%  Crawl & Parse
+00001  000%  Document Persist
+
+2015-09-23 12:58:02.138  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=GBfeu5hoEO0iUaqLxBZ2u-TXDb6QITami5hYumglDNHAd8bDPDi_HFA4lf6zivBD3mUOwWMym_Fn0XFJhHbVSq...: [s-461-164570] http://www.baidu.com/link?url=GBfeu5hoEO0iUaqLxBZ2u-TXDb6QITami5hYumglDNHAd8bDPDi_HFA4lf6zivBD3mUOwWMym_Fn0XFJhHbVSq
+2015-09-23 12:58:02.172  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : find 0 out of 23 new documents: [s-182-33861] http://news.chinaso.com/dupsearch.htm?csData=-7980612133595769318&page=1
+2015-09-23 12:58:02.172  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://news.chinaso.com/dupsearch.htm?csData=-7980612133595769318&page=1': running time (millis) = 354
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00309  087%  Crawl & Parse
+00000  000%  Cache New Seeds
+00045  013%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:02.215  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=bwFDwodIg-Qb-SjVOyPZf9WogpXsFMlI05neYEUjJY7qx9mvXNbtWeP_P0fHc-Zo8RcAF_n0eL1Gi5xB8u0Co5xTFZdD0nw4JKhNMVG28py...: [s-461-164570] http://www.baidu.com/link?url=bwFDwodIg-Qb-SjVOyPZf9WogpXsFMlI05neYEUjJY7qx9mvXNbtWeP_P0fHc-Zo8RcAF_n0eL1Gi5xB8u0Co5xTFZdD0nw4JKhNMVG28py
+2015-09-23 12:58:02.274  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=An5S2sFPpJov635cYRsYxALz3YUB_yyXLX5GjfjRLSon03edfvWKYVkiqxk_FzJB9ODntJC8sBdTCzzungRhMsyciaLSPX5-QfCy5FZTeha...: [s-70-8137] http://www.baidu.com/link?url=An5S2sFPpJov635cYRsYxALz3YUB_yyXLX5GjfjRLSon03edfvWKYVkiqxk_FzJB9ODntJC8sBdTCzzungRhMsyciaLSPX5-QfCy5FZTeha
+2015-09-23 12:58:02.280  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:02.307  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : find 0 out of 20 new documents: [i-126964] http://www.lnrd.gov.cn/channels/55.html
+2015-09-23 12:58:02.307  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.lnrd.gov.cn/channels/55.html': running time (millis) = 1874
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01846  099%  Crawl & Parse
+00000  000%  Cache New Seeds
+00028  001%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:02.320  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : find 2 out of 53 new documents: [i-166215] http://www.tianshui.com.cn/news/mj/
+2015-09-23 12:58:02.321  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.tianshui.com.cn/news/mj/': running time (millis) = 1245
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01144  092%  Crawl & Parse
+00000  000%  Cache New Seeds
+00101  008%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:02.354  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://hk.eastmoney.com/news/1532,20150923550604973.html': running time (millis) = 535
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00462  086%  Crawl & Parse
+00073  014%  Document Persist
+
+2015-09-23 12:58:02.409  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://www.szse.cn/...: [i-107483] http://www.szse.cn/
+2015-09-23 12:58:02.422  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : start processing http://bbs.8264.com/forum-39-1.html...: [i-72066] http://bbs.8264.com/forum-39-1.html
+2015-09-23 12:58:02.455  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:02.456  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/s?q1=%E6%B9%96%E5%8C%97&q2=&q3=&q4=&ct=0&ft=&q5=&q6=bbs1.people.com.cn&tn=baiduadv&lm=1&pn=0&rn=50&usm=1...: [s-66-7074] http://www.baidu.com/s?q1=%E6%B9%96%E5%8C%97&q2=&q3=&q4=&ct=0&ft=&q5=&q6=bbs1.people.com.cn&tn=baiduadv&lm=1&pn=0&rn=50&usm=1
+2015-09-23 12:58:02.537  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=BWzaeAO2cGDzULNUPLDQQPmxKjE4oB7U_mPReTDSUw8KkftPyRBAh5pCpag4eJrP3SV8hqLrU6Qg598aidg-mq': running time (millis) = 502
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00502  100%  Crawl & Parse
+
+2015-09-23 12:58:02.639  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:02.639  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.ezhiyao.com/news/search-htm-page-1-moduleid_CRtext-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF-kw-%E8%B4%B5%E9%98%B3.html?moduleid_CRtext=%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF&kw=%E8%B4%B5%E9%98%B3...: [s-587-215632] http://www.ezhiyao.com/news/search-htm-page-1-moduleid_CRtext-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF-kw-%E8%B4%B5%E9%98%B3.html?moduleid_CRtext=%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF&kw=%E8%B4%B5%E9%98%B3
+2015-09-23 12:58:02.738  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:02.738  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=47ECoSblJ6zR-ibgxnhQMQDE33Fc1AG1Ox581stIGlGprDQjOcBH_PdcS8e2lspds1tAO6pO2cVBkcrdL8va2a': running time (millis) = 665
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00665  100%  Crawl & Parse
+
+2015-09-23 12:58:02.764  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:02.764  WARN 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : Status code not acceptable: 400: [s-70-8137] http://www.baidu.com/link?url=An5S2sFPpJov635cYRsYxALz3YUB_yyXLX5GjfjRLSon03edfvWKYVkiqxk_FzJB9ODntJC8sBdTCzzungRhMsyciaLSPX5-QfCy5FZTeha
+2015-09-23 12:58:02.764  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=An5S2sFPpJov635cYRsYxALz3YUB_yyXLX5GjfjRLSon03edfvWKYVkiqxk_FzJB9ODntJC8sBdTCzzungRhMsyciaLSPX5-QfCy5FZTeha': running time (millis) = 490
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00490  100%  Crawl & Parse
+
+2015-09-23 12:58:02.840  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:02.840  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : start processing http://zhannei.baidu.com/cse/search?q=%E4%BC%8A%E7%8A%81&entry=1&s=2300126470136754598&nsid=1&srt=lds&p=0...: [s-502-181091] http://zhannei.baidu.com/cse/search?q=%E4%BC%8A%E7%8A%81&entry=1&s=2300126470136754598&nsid=1&srt=lds&p=0
+2015-09-23 12:58:02.865  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:02.865  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://media.kq.gov.cn:8080/was5/web/search?channelid=250883&searchword=%E6%B9%98%E6%BD%AD&perpage=10&outlinepage=10&page=1...: [s-323-109174] http://media.kq.gov.cn:8080/was5/web/search?channelid=250883&searchword=%E6%B9%98%E6%BD%AD&perpage=10&outlinepage=10&page=1
+2015-09-23 12:58:02.988  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : find 0 out of 17 new documents: [s-587-215632] http://www.ezhiyao.com/news/search-htm-page-1-moduleid_CRtext-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF-kw-%E8%B4%B5%E9%98%B3.html?moduleid_CRtext=%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF&kw=%E8%B4%B5%E9%98%B3
+2015-09-23 12:58:02.988  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.ezhiyao.com/news/search-htm-page-1-moduleid_CRtext-%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF-kw-%E8%B4%B5%E9%98%B3.html?moduleid_CRtext=%E8%A1%8C%E4%B8%9A%E8%B5%84%E8%AE%AF&kw=%E8%B4%B5%E9%98%B3': running time (millis) = 349
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00319  091%  Crawl & Parse
+00000  000%  Cache New Seeds
+00030  009%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:02.997  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:03.003  INFO 28465 --- [crawler-17] o.apache.http.impl.execchain.RetryExec   : I/O exception (java.net.SocketException) caught when processing request to {}->http://app.my0538.com:80: Connection reset
+2015-09-23 12:58:03.003  INFO 28465 --- [crawler-17] o.apache.http.impl.execchain.RetryExec   : Retrying request to {}->http://app.my0538.com:80
+2015-09-23 12:58:03.078  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 29 new documents: [s-66-7074] http://www.baidu.com/s?q1=%E6%B9%96%E5%8C%97&q2=&q3=&q4=&ct=0&ft=&q5=&q6=bbs1.people.com.cn&tn=baiduadv&lm=1&pn=0&rn=50&usm=1
+2015-09-23 12:58:03.078  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/s?q1=%E6%B9%96%E5%8C%97&q2=&q3=&q4=&ct=0&ft=&q5=&q6=bbs1.people.com.cn&tn=baiduadv&lm=1&pn=0&rn=50&usm=1': running time (millis) = 621
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00541  087%  Crawl & Parse
+00000  000%  Cache New Seeds
+00080  013%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:03.089  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.360qc.com/news_area_NewTestScore/1737_1.html...: [i-31467] http://www.360qc.com/news_area_NewTestScore/1737_1.html
+2015-09-23 12:58:03.114  WARN 28465 --- [crawler-13] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:03.125  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : find 0 out of 10 new documents: [s-502-181091] http://zhannei.baidu.com/cse/search?q=%E4%BC%8A%E7%8A%81&entry=1&s=2300126470136754598&nsid=1&srt=lds&p=0
+2015-09-23 12:58:03.126  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://zhannei.baidu.com/cse/search?q=%E4%BC%8A%E7%8A%81&entry=1&s=2300126470136754598&nsid=1&srt=lds&p=0': running time (millis) = 285
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00263  092%  Crawl & Parse
+00000  000%  Cache New Seeds
+00022  008%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:03.168  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : find 1 out of 48 new documents: [i-107483] http://www.szse.cn/
+2015-09-23 12:58:03.168  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.szse.cn/': running time (millis) = 759
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00705  093%  Crawl & Parse
+00000  000%  Cache New Seeds
+00054  007%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:03.179  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.179  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://review.jschina.com.cn/suwangpingtan/...: [i-80259] http://review.jschina.com.cn/suwangpingtan/
+2015-09-23 12:58:03.227  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.227  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : start processing http://tieba.baidu.com/f?kw=%E9%9B%85%E9%98%81&ie=utf-8...: [i-31150] http://tieba.baidu.com/f?kw=%E9%9B%85%E9%98%81&ie=utf-8
+2015-09-23 12:58:03.281  WARN 28465 --- [crawler-13] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.281  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://www.scxxb.com.cn/html/szzg/...: [i-160950] http://www.scxxb.com.cn/html/szzg/
+2015-09-23 12:58:03.339  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:03.350  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : find 0 out of 10 new documents: [s-323-109174] http://media.kq.gov.cn:8080/was5/web/search?channelid=250883&searchword=%E6%B9%98%E6%BD%AD&perpage=10&outlinepage=10&page=1
+2015-09-23 12:58:03.350  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://media.kq.gov.cn:8080/was5/web/search?channelid=250883&searchword=%E6%B9%98%E6%BD%AD&perpage=10&outlinepage=10&page=1': running time (millis) = 485
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00475  098%  Crawl & Parse
+00000  000%  Cache New Seeds
+00010  002%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:03.451  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.452  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://tieba.baidu.com/f?kw=%E5%8F%8C%E5%A1%94%E5%8C%BA&ie=utf-8...: [i-27950] http://tieba.baidu.com/f?kw=%E5%8F%8C%E5%A1%94%E5%8C%BA&ie=utf-8
+2015-09-23 12:58:03.458  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:03.527  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=GBfeu5hoEO0iUaqLxBZ2u-TXDb6QITami5hYumglDNHAd8bDPDi_HFA4lf6zivBD3mUOwWMym_Fn0XFJhHbVSq': running time (millis) = 1389
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01388  100%  Crawl & Parse
+00001  000%  Document Persist
+
+2015-09-23 12:58:03.602  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=bwFDwodIg-Qb-SjVOyPZf9WogpXsFMlI05neYEUjJY7qx9mvXNbtWeP_P0fHc-Zo8RcAF_n0eL1Gi5xB8u0Co5xTFZdD0nw4JKhNMVG28py': running time (millis) = 1387
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01386  100%  Crawl & Parse
+00001  000%  Document Persist
+
+2015-09-23 12:58:03.629  WARN 28465 --- [crawler-1] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.629  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://ent.cqnews.net/html/node_106588.htm...: [i-132391] http://ent.cqnews.net/html/node_106588.htm
+2015-09-23 12:58:03.633  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : find 0 out of 56 new documents: [i-20161] http://bbs.we54.com/forum-898-1.html
+2015-09-23 12:58:03.633  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://bbs.we54.com/forum-898-1.html': running time (millis) = 2934
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+02759  094%  Crawl & Parse
+00000  000%  Cache New Seeds
+00175  006%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:03.644  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : find 4 out of 197 new documents: [i-72066] http://bbs.8264.com/forum-39-1.html
+2015-09-23 12:58:03.645  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://bbs.8264.com/forum-39-1.html': running time (millis) = 1222
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+01003  082%  Crawl & Parse
+00000  000%  Cache New Seeds
+00219  018%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:03.665  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:03.669  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:03.704  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.704  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : start processing http://home.tj.fang.com/...: [i-34680] http://home.tj.fang.com/
+2015-09-23 12:58:03.734  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.734  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://intl.ce.cn/zhuanti/swsp/qqss/201509/23/t20150923_6560125.shtml...: [i-148343] http://intl.ce.cn/zhuanti/swsp/qqss/201509/23/t20150923_6560125.shtml
+2015-09-23 12:58:03.746  WARN 28465 --- [crawler-4] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:03.746  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=tSsbcMBO6zsV9S8d8BoNiYSqMEK-lxvrPVm449zMbI5AlZ9aW_5ywmS8Nc2CXsISt9ZOXOjt2Wyu2Y8IYnNpMRCDHvGeyPYPOsw22evVibi...: [s-70-8137] http://www.baidu.com/link?url=tSsbcMBO6zsV9S8d8BoNiYSqMEK-lxvrPVm449zMbI5AlZ9aW_5ywmS8Nc2CXsISt9ZOXOjt2Wyu2Y8IYnNpMRCDHvGeyPYPOsw22evVibi
+2015-09-23 12:58:03.840  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 111 new documents: [i-80259] http://review.jschina.com.cn/suwangpingtan/
+2015-09-23 12:58:03.840  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://review.jschina.com.cn/suwangpingtan/': running time (millis) = 661
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00487  074%  Crawl & Parse
+00000  000%  Cache New Seeds
+00174  026%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:03.900  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : find 48 out of 50 new documents: [i-31467] http://www.360qc.com/news_area_NewTestScore/1737_1.html
+2015-09-23 12:58:03.901  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : next page should be accessed: 0.96: [i-31467] http://www.360qc.com/news_area_NewTestScore/1737_1.html
+2015-09-23 12:58:03.901  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.360qc.com/news_area_NewTestScore/1737_1.html': running time (millis) = 811
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00580  072%  Crawl & Parse
+00000  000%  Cache New Seeds
+00230  028%  Cache New Docs
+00001  000%  Cache Next Page
+
+2015-09-23 12:58:03.942  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://gd.sina.com.cn/zs/renwu/list.html...: [i-129728] http://gd.sina.com.cn/zs/renwu/list.html
+2015-09-23 12:58:03.990  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : find 0 out of 109 new documents: [i-160950] http://www.scxxb.com.cn/html/szzg/
+2015-09-23 12:58:03.991  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.scxxb.com.cn/html/szzg/': running time (millis) = 709
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00612  086%  Crawl & Parse
+00000  000%  Cache New Seeds
+00097  014%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.002  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://www.huanghua.cn/bbs/lb-3.aspx...: [i-149471] http://www.huanghua.cn/bbs/lb-3.aspx
+2015-09-23 12:58:04.026  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : find 0 out of 119 new documents: [i-132391] http://ent.cqnews.net/html/node_106588.htm
+2015-09-23 12:58:04.026  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://ent.cqnews.net/html/node_106588.htm': running time (millis) = 397
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00259  065%  Crawl & Parse
+00000  000%  Cache New Seeds
+00138  035%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.092  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://intl.ce.cn/zhuanti/swsp/sjjj/qy/201509/23/t20150923_6560395.shtml...: [i-148343] http://intl.ce.cn/zhuanti/swsp/sjjj/qy/201509/23/t20150923_6560395.shtml
+2015-09-23 12:58:04.127  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://xd.tynews.com.cn/news_center/content/2015-09/23/content_1125536.htm...: [i-92060] http://xd.tynews.com.cn/news_center/content/2015-09/23/content_1125536.htm
+2015-09-23 12:58:04.158  WARN 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : Status code not acceptable: 400: [s-70-8137] http://www.baidu.com/link?url=tSsbcMBO6zsV9S8d8BoNiYSqMEK-lxvrPVm449zMbI5AlZ9aW_5ywmS8Nc2CXsISt9ZOXOjt2Wyu2Y8IYnNpMRCDHvGeyPYPOsw22evVibi
+2015-09-23 12:58:04.158  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=tSsbcMBO6zsV9S8d8BoNiYSqMEK-lxvrPVm449zMbI5AlZ9aW_5ywmS8Nc2CXsISt9ZOXOjt2Wyu2Y8IYnNpMRCDHvGeyPYPOsw22evVibi': running time (millis) = 412
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00412  100%  Crawl & Parse
+
+2015-09-23 12:58:04.221  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : find 2 out of 52 new documents: [i-31150] http://tieba.baidu.com/f?kw=%E9%9B%85%E9%98%81&ie=utf-8
+2015-09-23 12:58:04.221  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://tieba.baidu.com/f?kw=%E9%9B%85%E9%98%81&ie=utf-8': running time (millis) = 994
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00875  088%  Crawl & Parse
+00000  000%  Cache New Seeds
+00119  012%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.225  WARN 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-148343] http://intl.ce.cn/zhuanti/swsp/qqss/201509/23/t20150923_6560125.shtml
+2015-09-23 12:58:04.225  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://intl.ce.cn/zhuanti/swsp/qqss/201509/23/t20150923_6560125.shtml': running time (millis) = 490
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00490  100%  Crawl & Parse
+
+2015-09-23 12:58:04.259  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=Mou-7VVVMEQni5ugcBphZJXW0pwk849Ix9pcRynpLukuzYGNZYYlGrDzSzyJFc_OD1qz6mRPfX7zoMQl7RVhrzksG0FmQgHcxm625un_as7...: [s-70-8096] http://www.baidu.com/link?url=Mou-7VVVMEQni5ugcBphZJXW0pwk849Ix9pcRynpLukuzYGNZYYlGrDzSzyJFc_OD1qz6mRPfX7zoMQl7RVhrzksG0FmQgHcxm625un_as7
+2015-09-23 12:58:04.322  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=omddI6jqJR9yj38FtC5nW8yJTjs0YHfR-Jdfu8et7Zb9hjIZIBD-6XNtZSxYJ1G8QslTnVcwEsHFt6GeX2LG1hQEZulBYdyonkdO3p68Cq7...: [s-70-8096] http://www.baidu.com/link?url=omddI6jqJR9yj38FtC5nW8yJTjs0YHfR-Jdfu8et7Zb9hjIZIBD-6XNtZSxYJ1G8QslTnVcwEsHFt6GeX2LG1hQEZulBYdyonkdO3p68Cq7
+2015-09-23 12:58:04.325  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.326  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/link?url=pfpIMIa2glxrHNnYe-cCG2C3S_hwNwtBvghgbN1nGX3_3lh9Esb0525CKRjYm3sG0Cz7TJmTvhZikOh7LuECPmKvndKXLMM-8H1Utc4W5qe...: [s-70-8096] http://www.baidu.com/link?url=pfpIMIa2glxrHNnYe-cCG2C3S_hwNwtBvghgbN1nGX3_3lh9Esb0525CKRjYm3sG0Cz7TJmTvhZikOh7LuECPmKvndKXLMM-8H1Utc4W5qe
+2015-09-23 12:58:04.414  WARN 28465 --- [crawler-1] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:04.414  WARN 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-92060] http://xd.tynews.com.cn/news_center/content/2015-09/23/content_1125536.htm
+2015-09-23 12:58:04.414  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://xd.tynews.com.cn/news_center/content/2015-09/23/content_1125536.htm': running time (millis) = 287
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00287  100%  Crawl & Parse
+
+2015-09-23 12:58:04.432  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : find 0 out of 34 new documents: [i-149471] http://www.huanghua.cn/bbs/lb-3.aspx
+2015-09-23 12:58:04.432  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.huanghua.cn/bbs/lb-3.aspx': running time (millis) = 430
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00312  073%  Crawl & Parse
+00000  000%  Cache New Seeds
+00118  027%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.442  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : find 0 out of 53 new documents: [i-27950] http://tieba.baidu.com/f?kw=%E5%8F%8C%E5%A1%94%E5%8C%BA&ie=utf-8
+2015-09-23 12:58:04.443  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://tieba.baidu.com/f?kw=%E5%8F%8C%E5%A1%94%E5%8C%BA&ie=utf-8': running time (millis) = 990
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00811  082%  Crawl & Parse
+00000  000%  Cache New Seeds
+00179  018%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.496  WARN 28465 --- [crawler-13] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:04.496  WARN 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : Status code not acceptable: 404: [i-148343] http://intl.ce.cn/zhuanti/swsp/sjjj/qy/201509/23/t20150923_6560395.shtml
+2015-09-23 12:58:04.497  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://intl.ce.cn/zhuanti/swsp/sjjj/qy/201509/23/t20150923_6560395.shtml': running time (millis) = 404
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00404  100%  Crawl & Parse
+
+2015-09-23 12:58:04.515  WARN 28465 --- [crawler-1] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.516  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://shenyang.customs.gov.cn/publish/portal102/tab62783/...: [i-68971] http://shenyang.customs.gov.cn/publish/portal102/tab62783/
+2015-09-23 12:58:04.533  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.533  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://edu.enorth.com.cn/...: [i-37005] http://edu.enorth.com.cn/
+2015-09-23 12:58:04.544  WARN 28465 --- [crawler-18] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.544  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://www.shaoxing.com.cn/sxx/...: [i-83399] http://www.shaoxing.com.cn/sxx/
+2015-09-23 12:58:04.560  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 49 new documents: [i-129728] http://gd.sina.com.cn/zs/renwu/list.html
+2015-09-23 12:58:04.560  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://gd.sina.com.cn/zs/renwu/list.html': running time (millis) = 618
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00367  059%  Crawl & Parse
+00000  000%  Cache New Seeds
+00251  041%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.582  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : find 2 out of 201 new documents: [i-34680] http://home.tj.fang.com/
+2015-09-23 12:58:04.582  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://home.tj.fang.com/': running time (millis) = 878
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00502  057%  Crawl & Parse
+00000  000%  Cache New Seeds
+00376  043%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.601  WARN 28465 --- [crawler-13] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.601  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://www.fjlcnews.com/kjwh/...: [i-101820] http://www.fjlcnews.com/kjwh/
+2015-09-23 12:58:04.640  WARN 28465 --- [crawler-4] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:04.650  WARN 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : Status code not acceptable: 400: [s-70-8096] http://www.baidu.com/link?url=Mou-7VVVMEQni5ugcBphZJXW0pwk849Ix9pcRynpLukuzYGNZYYlGrDzSzyJFc_OD1qz6mRPfX7zoMQl7RVhrzksG0FmQgHcxm625un_as7
+2015-09-23 12:58:04.650  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=Mou-7VVVMEQni5ugcBphZJXW0pwk849Ix9pcRynpLukuzYGNZYYlGrDzSzyJFc_OD1qz6mRPfX7zoMQl7RVhrzksG0FmQgHcxm625un_as7': running time (millis) = 391
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00391  100%  Crawl & Parse
+
+2015-09-23 12:58:04.661  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.661  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://www.sogou.com/tx?site=hb.qq.com&query=%E6%9D%AD%E5%B7%9E&hdq=sogou-wsse-22c5a901070d1c2a&sourceid=&idx=f&duppid=1&page=1...: [s-403-141355] http://www.sogou.com/tx?site=hb.qq.com&query=%E6%9D%AD%E5%B7%9E&hdq=sogou-wsse-22c5a901070d1c2a&sourceid=&idx=f&duppid=1&page=1
+2015-09-23 12:58:04.683  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.683  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/s?ie=utf-8&cus_f=0&wd=%E6%B3%B0%E5%B7%9E&tn=71032170_cpr&rsv_lu=31_sb&si=china.com&ct=2097152&fenlei=mv6qUAdxTZPxTvb0IZRqIHDLnjmdnWc0T1d-uWTdPvfznhwbnhf3PWTv0AGo5y7WPhcvnAmznhmLuhF9mhD0IAYqnWm3PjfkPHRz0APh5Hnk0ZFB5H00UZNopHYk0AP8IA3qP1Dsn1ckP1KxmLKz0ZP1TjYk0ZP1TjcqnfKdThsqpZwYTaR1fiRzwBRzwhP_Iyc-nbNWpA-8miRzwyPEUiRzw60...: [s-619-228437] http://www.baidu.com/s?ie=utf-8&cus_f=0&wd=%E6%B3%B0%E5%B7%9E&tn=71032170_cpr&rsv_lu=31_sb&si=china.com&ct=2097152&fenlei=mv6qUAdxTZPxTvb0IZRqIHDLnjmdnWc0T1d-uWTdPvfznhwbnhf3PWTv0AGo5y7WPhcvnAmznhmLuhF9mhD0IAYqnWm3PjfkPHRz0APh5Hnk0ZFB5H00UZNopHYk0AP8IA3qP1Dsn1ckP1KxmLKz0ZP1TjYk0ZP1TjcqnfKdThsqpZwYTaR1fiRzwBRzwhP_Iyc-nbNWpA-8miRzwyPEUiRzw60
+2015-09-23 12:58:04.725  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:04.734  WARN 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : Status code not acceptable: 400: [s-70-8096] http://www.baidu.com/link?url=omddI6jqJR9yj38FtC5nW8yJTjs0YHfR-Jdfu8et7Zb9hjIZIBD-6XNtZSxYJ1G8QslTnVcwEsHFt6GeX2LG1hQEZulBYdyonkdO3p68Cq7
+2015-09-23 12:58:04.734  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=omddI6jqJR9yj38FtC5nW8yJTjs0YHfR-Jdfu8et7Zb9hjIZIBD-6XNtZSxYJ1G8QslTnVcwEsHFt6GeX2LG1hQEZulBYdyonkdO3p68Cq7': running time (millis) = 411
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00411  100%  Crawl & Parse
+
+2015-09-23 12:58:04.752  WARN 28465 --- [crawler-4] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.752  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : start processing http://auto.aynews.net.cn/search/?keyword=%E6%B5%99%E6%B1%9F&page=1...: [s-438-155497] http://auto.aynews.net.cn/search/?keyword=%E6%B5%99%E6%B1%9F&page=1
+2015-09-23 12:58:04.769  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [FetchLog]
+2015-09-23 12:58:04.779  WARN 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : Status code not acceptable: 400: [s-70-8096] http://www.baidu.com/link?url=pfpIMIa2glxrHNnYe-cCG2C3S_hwNwtBvghgbN1nGX3_3lh9Esb0525CKRjYm3sG0Cz7TJmTvhZikOh7LuECPmKvndKXLMM-8H1Utc4W5qe
+2015-09-23 12:58:04.779  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/link?url=pfpIMIa2glxrHNnYe-cCG2C3S_hwNwtBvghgbN1nGX3_3lh9Esb0525CKRjYm3sG0Cz7TJmTvhZikOh7LuECPmKvndKXLMM-8H1Utc4W5qe': running time (millis) = 453
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00453  100%  Crawl & Parse
+
+2015-09-23 12:58:04.804  WARN 28465 --- [crawler-1] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:04.835  WARN 28465 --- [crawler-6] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.835  INFO 28465 --- [crawler-6] com.peony.crawler.WebCrawler             : start processing http://www.baidu.com/s?q1=%E9%92%A6%E5%B7%9E&q2=&q3=&q4=&ct=0&ft=&q5=&q6=sohu.com&tn=baiduadv&lm=1&pn=0&rn=50&usm=1...: [s-80-10768] http://www.baidu.com/s?q1=%E9%92%A6%E5%B7%9E&q2=&q3=&q4=&ct=0&ft=&q5=&q6=sohu.com&tn=baiduadv&lm=1&pn=0&rn=50&usm=1
+2015-09-23 12:58:04.837  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : find 0 out of 19 new documents: [i-68971] http://shenyang.customs.gov.cn/publish/portal102/tab62783/
+2015-09-23 12:58:04.837  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://shenyang.customs.gov.cn/publish/portal102/tab62783/': running time (millis) = 321
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00297  093%  Crawl & Parse
+00000  000%  Cache New Seeds
+00024  007%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:04.880  WARN 28465 --- [crawler-3] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.880  INFO 28465 --- [crawler-3] com.peony.crawler.WebCrawler             : start processing http://bbs.lvy.cn/lvyouluntan-424-1.html...: [i-72697] http://bbs.lvy.cn/lvyouluntan-424-1.html
+2015-09-23 12:58:04.920  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:04.943  WARN 28465 --- [crawler-1] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:04.943  INFO 28465 --- [crawler-1] com.peony.crawler.WebCrawler             : start processing http://tieba.baidu.com/f?kw=%E6%B9%96%E5%8F%A3&ie=utf-8...: [i-28566] http://tieba.baidu.com/f?kw=%E6%B9%96%E5%8F%A3&ie=utf-8
+2015-09-23 12:58:05.063  WARN 28465 --- [crawler-13] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:05.103  WARN 28465 --- [crawler-4] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:05.108  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : find 0 out of 31 new documents: [i-101820] http://www.fjlcnews.com/kjwh/
+2015-09-23 12:58:05.108  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.fjlcnews.com/kjwh/': running time (millis) = 507
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00462  091%  Crawl & Parse
+00000  000%  Cache New Seeds
+00045  009%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:05.117  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : find 2 out of 159 new documents: [i-37005] http://edu.enorth.com.cn/
+2015-09-23 12:58:05.117  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://edu.enorth.com.cn/': running time (millis) = 584
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00390  067%  Crawl & Parse
+00000  000%  Cache New Seeds
+00194  033%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:05.123  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : find 0 out of 14 new documents: [s-438-155497] http://auto.aynews.net.cn/search/?keyword=%E6%B5%99%E6%B1%9F&page=1
+2015-09-23 12:58:05.123  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://auto.aynews.net.cn/search/?keyword=%E6%B5%99%E6%B1%9F&page=1': running time (millis) = 371
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00352  095%  Crawl & Parse
+00000  000%  Cache New Seeds
+00019  005%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:05.166  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:05.175  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:05.181  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : find 0 out of 13 new documents: [s-403-141355] http://www.sogou.com/tx?site=hb.qq.com&query=%E6%9D%AD%E5%B7%9E&hdq=sogou-wsse-22c5a901070d1c2a&sourceid=&idx=f&duppid=1&page=1
+2015-09-23 12:58:05.182  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.sogou.com/tx?site=hb.qq.com&query=%E6%9D%AD%E5%B7%9E&hdq=sogou-wsse-22c5a901070d1c2a&sourceid=&idx=f&duppid=1&page=1': running time (millis) = 520
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00505  097%  Crawl & Parse
+00000  000%  Cache New Seeds
+00015  003%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:05.198  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : find 0 out of 14 new documents: [s-619-228437] http://www.baidu.com/s?ie=utf-8&cus_f=0&wd=%E6%B3%B0%E5%B7%9E&tn=71032170_cpr&rsv_lu=31_sb&si=china.com&ct=2097152&fenlei=mv6qUAdxTZPxTvb0IZRqIHDLnjmdnWc0T1d-uWTdPvfznhwbnhf3PWTv0AGo5y7WPhcvnAmznhmLuhF9mhD0IAYqnWm3PjfkPHRz0APh5Hnk0ZFB5H00UZNopHYk0AP8IA3qP1Dsn1ckP1KxmLKz0ZP1TjYk0ZP1TjcqnfKdThsqpZwYTaR1fiRzwBRzwhP_Iyc-nbNWpA-8miRzwyPEUiRzw60
+2015-09-23 12:58:05.199  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.baidu.com/s?ie=utf-8&cus_f=0&wd=%E6%B3%B0%E5%B7%9E&tn=71032170_cpr&rsv_lu=31_sb&si=china.com&ct=2097152&fenlei=mv6qUAdxTZPxTvb0IZRqIHDLnjmdnWc0T1d-uWTdPvfznhwbnhf3PWTv0AGo5y7WPhcvnAmznhmLuhF9mhD0IAYqnWm3PjfkPHRz0APh5Hnk0ZFB5H00UZNopHYk0AP8IA3qP1Dsn1ckP1KxmLKz0ZP1TjYk0ZP1TjcqnfKdThsqpZwYTaR1fiRzwBRzwhP_Iyc-nbNWpA-8miRzwyPEUiRzw60': running time (millis) = 515
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00492  096%  Crawl & Parse
+00000  000%  Cache New Seeds
+00023  004%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:05.209  WARN 28465 --- [crawler-13] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:05.209  INFO 28465 --- [crawler-13] com.peony.crawler.WebCrawler             : start processing http://www.zsblb.com/h/8239/list.html...: [i-53327] http://www.zsblb.com/h/8239/list.html
+2015-09-23 12:58:05.219  WARN 28465 --- [crawler-11] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:05.219  INFO 28465 --- [crawler-11] com.peony.crawler.WebCrawler             : start processing http://keerqin.tongliao.gov.cn/Search.aspx?keywords=%E6%B7%AE%E5%8C%97&pi=1...: [s-324-109567] http://keerqin.tongliao.gov.cn/Search.aspx?keywords=%E6%B7%AE%E5%8C%97&pi=1
+2015-09-23 12:58:05.224  WARN 28465 --- [crawler-4] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:05.224  INFO 28465 --- [crawler-4] com.peony.crawler.WebCrawler             : start processing http://www.nmgfood.net/shipinanquan/...: [i-160147] http://www.nmgfood.net/shipinanquan/
+2015-09-23 12:58:05.275  WARN 28465 --- [crawler-20] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [SourceLog]
+2015-09-23 12:58:05.275  INFO 28465 --- [crawler-20] com.peony.crawler.WebCrawler             : find 0 out of 0 new documents: [s-779-293327] http://search.discuz.qq.com/f/search?q=%E6%B4%9B%E9%98%B3&sId=1115708&ts=1436494320&mySign=31b4a500&menu=1&rfh=1&qs=txt.form.a&page=1
+2015-09-23 12:58:05.275  INFO 28465 --- [crawler-20] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://search.discuz.qq.com/f/search?q=%E6%B4%9B%E9%98%B3&sId=1115708&ts=1436494320&mySign=31b4a500&menu=1&rfh=1&qs=txt.form.a&page=1': running time (millis) = 10331
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+10331  100%  Crawl & Parse
+00000  000%  Cache New Seeds
+00000  000%  Cache New Docs
+
+2015-09-23 12:58:05.283  WARN 28465 --- [crawler-10] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:05.283  INFO 28465 --- [crawler-10] com.peony.crawler.WebCrawler             : start processing http://www.cqn.com.cn/news/pinpai/fangchan/index.html...: [i-161131] http://www.cqn.com.cn/news/pinpai/fangchan/index.html
+2015-09-23 12:58:05.300  WARN 28465 --- [crawler-9] .p.c.s.l.DatabaseUniversalLoggingService : logging queue length exceeded, log ignored [RedisLog]
+2015-09-23 12:58:05.300  INFO 28465 --- [crawler-9] com.peony.crawler.WebCrawler             : start processing http://rudong.gov.cn/xdlycs/xdlycs.html...: [i-85711] http://rudong.gov.cn/xdlycs/xdlycs.html
+2015-09-23 12:58:05.361  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : find 0 out of 55 new documents: [i-83399] http://www.shaoxing.com.cn/sxx/
+2015-09-23 12:58:05.362  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : StopWatch 'watch for http://www.shaoxing.com.cn/sxx/': running time (millis) = 817
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+00500  061%  Crawl & Parse
+00000  000%  Cache New Seeds
+00317  039%  Cache New Docs
+00000  000%  Cache Next Page
+
+2015-09-23 12:58:05.377  INFO 28465 --- [crawler-20] com.peony.crawler.WebCrawler             : start processing http://www.315xbw.com/news.php?cid/19.htm=...: [i-97556] http://www.315xbw.com/news.php?cid/19.htm=
+2015-09-23 12:58:05.465  INFO 28465 --- [crawler-18] com.peony.crawler.WebCrawler             : start processing http://pl.gansudaily.com.cn/kdq/...: [i-133830] http://pl.gansudaily.com.cn/kdq/
+^C
+[cruser@i-zmnuoy1b v4]$ fd
+-bash: fd: command not found
+[cruser@i-zmnuoy1b v4]$ ls
+crawler-app.jar  data  logs  run.sh  stop.sh
+[cruser@i-zmnuoy1b v4]$ cat run.sh
+export PATH=$PATH:/usr/bin:/bin:/usr/share/java/jdk1.7.0_60/jre/bin:/usr/local/bin
+
+cd ~/v4
+nohup java -Xms512m -XX:PermSize=64m \
+           -Djava.net.preferIPv4Stack=true \
+           -Dlogger.nodeId=${MACHINE_ID} \
+           -Dcrawler.maxThreads=20 \
+           -jar crawler-app.jar >/dev/null 2>&1 &
+[cruser@i-zmnuoy1b v4]$ cat stop.sh
+export PATH=$PATH:/usr/bin:/bin:/usr/share/java/jdk1.7.0_60/jre/bin:/usr/local/bin
+
+for PID in `ps aux | grep 'crawler-app' | grep -v 'grep' | awk '{print $2}'`; do
+        kill -9 $PID
+done
+[cruser@i-zmnuoy1b v4]$ ls -lha
+total 37M
+drwxrwxr-x 4 cruser cruser 4.0K Sep  2 17:12 .
+drwx------ 9 cruser cruser 4.0K Sep  2 17:12 ..
+-rw-rw-r-- 1 cruser cruser  37M Sep  2 17:12 crawler-app.jar
+drwxrwxr-x 4 cruser cruser 4.0K Sep  2 17:12 data
+drwxrwxr-x 2 cruser cruser 4.0K Sep 23 12:55 logs
+-rwxrwxr-x 1 cruser cruser  306 Sep  2 17:12 run.sh
+-rwxrwxr-x 1 cruser cruser  191 Sep  2 17:12 stop.sh
+[cruser@i-zmnuoy1b v4]$ logout
+Connection to 119.254.108.99 closed.
+[cruser@ctrl ~/.ssh]$ cd ~/v4
+[cruser@ctrl ~/v4]$ ls
+app  app-proxy  schedule  schedule-proxy
+[cruser@ctrl ~/v4]$ cd app
+[cruser@ctrl ~/v4/app]$ ls
+make.sh     script       server.list.bak  stop.sh  update.sh
+restart.sh  server.list  start.sh         temp
+[cruser@ctrl ~/v4/app]$ ctrl
