@@ -37,10 +37,10 @@ public class AnalyseLog {
 						if (line.contains("out of")) {
 							list.add(line);
 							Info info = getInfo(line.split(" : ")[1]);
-							System.out.println("info: " + info.status + ";  source: " + info.infomation);
+							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
 						} else if (line.contains("Failed to access")) {
 							Info info = new Info(InfoStatus.NOTEXIST, getBadSearch(line));
-							System.out.println("info: " + info.status + ";  source: " + info.infomation);
+							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
 						}
 					}
 				}

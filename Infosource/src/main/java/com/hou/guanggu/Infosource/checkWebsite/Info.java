@@ -6,8 +6,24 @@ package com.hou.guanggu.Infosource.checkWebsite;
  */
 
 public class Info {
-	InfoStatus status;
-	String infomation;
+	private InfoStatus status;
+	private String infomation;
+
+	public InfoStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(InfoStatus status) {
+		this.status = status;
+	}
+
+	public String getInfomation() {
+		return infomation;
+	}
+
+	public void setInfomation(String infomation) {
+		this.infomation = infomation;
+	}
 
 	Info(InfoStatus status, String infomation) {
 		this.status = status;
