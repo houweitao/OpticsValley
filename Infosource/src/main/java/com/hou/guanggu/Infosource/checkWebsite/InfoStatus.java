@@ -6,5 +6,10 @@ package com.hou.guanggu.Infosource.checkWebsite;
  */
 
 public enum InfoStatus {
-	UNKNOWN, NICE, HIGH, LOW, BAD
+	UNKNOWN, //未定义
+	NICE, //正常
+	HIGH, //爬取频率过高
+	LOW, //爬取频率过低
+	BAD, //网页存在，但无搜索结果
+	NOTEXIST//网页不存在
 }

@@ -38,6 +38,9 @@ public class AnalyseLog {
 							list.add(line);
 							Info info = getInfo(line.split(" : ")[1]);
 							System.out.println("info: " + info.status + ";  source: " + info.infomation);
+						} else if (line.contains("Failed to access")) {
+							Info info = new Info(InfoStatus.NOTEXIST, getBadSearch(line));
+							System.out.println("info: " + info.status + ";  source: " + info.infomation);
 						}
 					}
 				}
@@ -55,6 +58,21 @@ public class AnalyseLog {
 //		return list;
 	}
 
+	//获取爬取失败的组合
+	String getBadSearch(String str) {
+		String infomation = "";
+		Pattern p = Pattern.compile("\\[.*?\\]");// 查找规则公式中大括号以内的字符
+		Matcher m = p.matcher(str);
+		while (m.find()) {// 遍历找到的所有大括号
+			String param = m.group().replaceAll("\\[\\]", "");// 去掉括号
+//			System.out.println(param.substring(1, param.length() - 1));
+			infomation = param.substring(1, param.length() - 1);
+		}
+
+		return infomation;
+	}
+
+	//获取正常爬取的组合
 	Info getInfo(String str) {
 		String infomation = "";
 		Pattern p = Pattern.compile("\\[.*?\\]");// 查找规则公式中大括号以内的字符
