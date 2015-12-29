@@ -25,7 +25,7 @@ public class Info {
 		this.infomation = infomation;
 	}
 
-	Info(InfoStatus status, String infomation) {
+	public Info(InfoStatus status, String infomation) {
 		this.status = status;
 		this.infomation = infomation;
 	}
