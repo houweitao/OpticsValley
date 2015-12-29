@@ -1,6 +1,10 @@
 package com.hou.guanggu.Infosource.checkWebsite;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
+import com.hou.guanggu.Infosource.checkWebsite.dao.KeywordDao;
 
 /**
  * @author houweitao
@@ -8,26 +12,52 @@ import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
  */
 
 public class OperateDB {
+	private static final Logger log = LoggerFactory.getLogger(OperateDB.class);
+
 	public void dealDB(Info info) {
 		if (info.getInfomation().charAt(0) == 'i') {
 			//信息源
-
 			InfosourceDao dao = new InfosourceDao();
 
 			switch (info.getStatus()) {
 			case BAD:
-				dao.updateFreq(Integer.valueOf(info.getInfomation().split("-")[1]), 5);
+				dao.updateFreqFastDB(info, 5);
 				break;
 			case LOW:
-				dao.updateFreq(Integer.valueOf(info.getInfomation().split("-")[1]), -1);
+				dao.updateFreqFastDB(info, -1);
 				break;
 			case HIGH:
-				dao.updateFreq(Integer.valueOf(info.getInfomation().split("-")[1]), 1);
+				dao.updateFreqFastDB(info, 1);
 				break;
 			case NICE:
 				break;
 			case NOTEXIST://+10
-				dao.updateFreq(Integer.valueOf(info.getInfomation().split("-")[1]), 10);
+				dao.updateFreqFastDB(info, 10);
+				break;
+			case UNKNOWN:
+				break;
+
+			default:
+				break;
+
+			}
+		} else if (info.getInfomation().charAt(0) == 's') {
+			//搜索源
+			KeywordDao dao = new KeywordDao();
+			switch (info.getStatus()) {
+			case BAD:
+				dao.updateFreqFastDB(info, 5);
+				break;
+			case LOW:
+				dao.updateFreqFastDB(info, -1);
+				break;
+			case HIGH:
+				dao.updateFreqFastDB(info, 1);
+				break;
+			case NICE:
+				break;
+			case NOTEXIST://+10
+				dao.updateFreqFastDB(info, 10);
 				break;
 			case UNKNOWN:
 				break;
@@ -37,19 +67,7 @@ public class OperateDB {
 
 			}
 		} else {
-			//搜索源
-			switch (info.getStatus()) {
-			case BAD:
-			case LOW:
-			case HIGH:
-			case NICE:
-			case NOTEXIST:
-			case UNKNOWN:
-
-			default:
-				break;
-
-			}
+			log.info("not unified input..");
 		}
 	}
 }

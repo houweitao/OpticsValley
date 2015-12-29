@@ -1,5 +1,7 @@
 package com.hou.guanggu.Infosource;
 
+import org.junit.Test;
+
 import com.hou.guanggu.Infosource.checkWebsite.Info;
 import com.hou.guanggu.Infosource.checkWebsite.InfoStatus;
 import com.hou.guanggu.Infosource.checkWebsite.OperateDB;
@@ -19,7 +21,17 @@ public class InfosourceDaoTest {
 		Infosource infosource = new Infosource(1416);
 
 		InfosourceDao infosourceDao = new InfosourceDao();
-		infosourceDao.updateFreq(infosource, 1);
+//		infosourceDao.updateFreq(infosource, 1);
+
+		info = new Info(InfoStatus.LOW, "i-1416");
+		infosourceDao.updateFreqFastDB(info, 100);
 	}
 
+	@Test
+	void testFastDB() {
+		System.out.println("test");
+		Info info = new Info(InfoStatus.LOW, "i-1416");
+		InfosourceDao infosourceDao = new InfosourceDao();
+		infosourceDao.updateFreqFastDB(info, 100);
+	}
 }

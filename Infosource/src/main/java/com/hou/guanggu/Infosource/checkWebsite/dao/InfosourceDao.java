@@ -21,21 +21,28 @@ import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
  */
 
 public class InfosourceDao {
-	private static final Logger LOGGER = LoggerFactory.getLogger(InfosourceDao.class);
-//	DBQuery nativeQuery = DB.createNativeQuery("select freq from `wdyq_infosource_copy` where `id`=?");
-//	DBQuery updateQuery = DB.createNativeQuery("update `wdyq_infosource_copy` Set `freq` =? where `id`=?");
+	private static final Logger log = LoggerFactory.getLogger(InfosourceDao.class);
 	private static Connection conn = ConnectionFactory.getInstance().makeConnection();
+	DBQuery nativeQuery = DB.createNativeQuery("select * from `wdyq_infosource_copy` where `id`=?");
+	DBQuery updateQuery = DB.createNativeQuery("update `wdyq_infosource_copy` set `freq` =? where `id`=?");
+
+	public void updateFreqFastDB(Info info, int changeNum) {
+		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
+		nativeQuery.setParameter(1, id);
+		int p = 1;
+		int nowFreq = nativeQuery.findUnique().getInt("freq");
+//				.executeUpdate();
+		System.out.println(nowFreq);
+		if (nowFreq + changeNum > 0)
+			nowFreq = nowFreq + changeNum;
+
+		updateQuery.setParameter(p++, nowFreq);
+		updateQuery.setParameter(p++, id);
+		updateQuery.executeUpdate();
+//		log.info("插入成功！");
+	}
 
 	public void updateFreq(Infosource info, int changeNum) {
-//		nativeQuery.setParameter(1, info.getId());
-//		int p = 1;
-//		int nowFreq = nativeQuery.executeUpdate();
-//		if (nowFreq + changeNum > 0)
-//			nowFreq = nowFreq + changeNum;
-//
-//		updateQuery.setParameter(p++, nowFreq);
-//		updateQuery.setParameter(p++, info.getId());
-
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement("select * from wdyq_infosource_copy where id=?");
@@ -57,13 +64,12 @@ public class InfosourceDao {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public void updateFreq(int id, int changeNum) {
+
+	public void updateFreq(Info info, int changeNum) {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement("select * from wdyq_infosource_copy where id=?");
-			ps.setInt(1, id);
+			ps.setInt(1, Integer.valueOf(info.getInfomation().split("-")[1]));
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				int freq = rs.getInt("freq");
@@ -73,7 +79,7 @@ public class InfosourceDao {
 
 				ps = conn.prepareStatement("update wdyq_infosource_copy set freq =? where id=?");
 				ps.setInt(1, freq);
-				ps.setInt(2, id);
+				ps.setInt(2, Integer.valueOf(info.getInfomation().split("-")[1]));
 				ps.execute();
 			}
 		} catch (SQLException e) {

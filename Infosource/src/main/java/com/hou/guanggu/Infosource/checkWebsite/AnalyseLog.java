@@ -16,14 +16,26 @@ import java.util.regex.Pattern;
  */
 
 public class AnalyseLog {
-
 	public static void main(String[] args) {
 		AnalyseLog analyseLog = new AnalyseLog();
-		analyseLog.testReadLog();
+		OperateDB operate = new OperateDB();
+		List<Info> infoList = new ArrayList<Info>();
+		List<Info> normaiList = new ArrayList<Info>();
+		List<Info> abnormaiList = new ArrayList<Info>();
+		analyseLog.readLog(normaiList, abnormaiList);
+
+		System.out.println("abnormal: " + abnormaiList.size());
+		System.out.println("normal: " + normaiList.size());
+
+		infoList.addAll(abnormaiList);
+		infoList.addAll(normaiList);
+
+		for (Info info : infoList) {
+			operate.dealDB(info);
+		}
 	}
 
-	void testReadLog() {
-		List<String> list = new ArrayList<String>();
+	void readLog(List<Info> normaiList, List<Info> abnormaiList) {
 		try {
 			FileInputStream is = new FileInputStream("recources/log.log");
 			InputStreamReader isr = new InputStreamReader(is);
@@ -35,11 +47,12 @@ public class AnalyseLog {
 						continue;
 					else {
 						if (line.contains("out of")) {
-							list.add(line);
-							Info info = getInfo(line.split(" : ")[1]);
+							Info info = getNormal(line.split(" : ")[1]);
+							normaiList.add(info);
 							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
 						} else if (line.contains("Failed to access")) {
-							Info info = new Info(InfoStatus.NOTEXIST, getBadSearch(line));
+							Info info = new Info(InfoStatus.NOTEXIST, getAbnormal(line));
+							abnormaiList.add(info);
 							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
 						}
 					}
@@ -53,13 +66,11 @@ public class AnalyseLog {
 			System.out.println("文件读取路径错误FileNotFoundException");
 		}
 
-		System.out.println(list.size());
-
 //		return list;
 	}
 
 	//获取爬取失败的组合
-	String getBadSearch(String str) {
+	String getAbnormal(String str) {
 		String infomation = "";
 		Pattern p = Pattern.compile("\\[.*?\\]");// 查找规则公式中大括号以内的字符
 		Matcher m = p.matcher(str);
@@ -73,7 +84,7 @@ public class AnalyseLog {
 	}
 
 	//获取正常爬取的组合
-	Info getInfo(String str) {
+	Info getNormal(String str) {
 		String infomation = "";
 		Pattern p = Pattern.compile("\\[.*?\\]");// 查找规则公式中大括号以内的字符
 		Matcher m = p.matcher(str);
