@@ -22,7 +22,6 @@ public class KeywordDao {
 		nativeQuery.setParameter(1, id);
 		int p = 1;
 		int nowFreq = nativeQuery.findUnique().getInt("freq");
-//				.executeUpdate();
 		System.out.println(nowFreq);
 		if (nowFreq + changeNum > 0)
 			nowFreq = nowFreq + changeNum;
