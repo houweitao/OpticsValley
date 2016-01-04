@@ -31,11 +31,9 @@ public class InfosourceDao {
 
 	public void updateFreqFastDB(Info info, int changeNum) {
 		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
-		nativeQuery.setParameter(1, id);
 		int p = 1;
 
-		int nowFreq = nativeQuery.findUnique().getInt("freq");
-//				.executeUpdate();
+		int nowFreq = getInfoSource(id).getInt("freq");
 		System.out.println(nowFreq);
 		if (nowFreq + changeNum > 0)
 			nowFreq = nowFreq + changeNum;
@@ -46,22 +44,35 @@ public class InfosourceDao {
 //		log.info("插入成功！");
 	}
 
-	//暂时没用？
-	public List<Infosource> findList(Info info) {
-		List<Infosource> list = new LinkedList<Infosource>();
-
-		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
+	private DBRow getInfoSource(int id) {
 		nativeQuery.setParameter(1, id);
-
 		DBRow row = nativeQuery.findUnique();
-
-//		Infosource in = new Infosource(2);
-
-		return list;
+		return row;
 	}
-	
-	public void update(Infosource info){
-		DBQuery update = DB.createNativeQuery("update `wdyq_report_infosource` set `freq` =? where `id`=?");
+
+	//暂时没用？
+//	public List<Infosource> findList(Info info) {
+//		List<Infosource> list = new LinkedList<Infosource>();
+//
+//		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
+//		nativeQuery.setParameter(1, id);
+//
+//		DBRow row = nativeQuery.findUnique();
+//
+////		Infosource in = new Infosource(2);
+//
+//		return list;
+//	}
+
+	public void update(Infosource infosource) {
+		int id = Integer.valueOf(infosource.getId());
+		DBQuery update = DB.createNativeQuery("update `wdyq_report_infosource` set set `url`=?,`freq` =? where `id`=?");
+		DBQuery insert = DB.createNativeQuery("INSERT INTO wdyq_report_infosource(id,url,website,searchNum,newDocNum,docNum,freq) VALUES(?,?,?,?,?,?,?)");
+		if (getInfoSource(id) != null) {
+//			update
+		} else {
+//			insert;
+		}
 
 	}
 }
