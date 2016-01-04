@@ -8,6 +8,12 @@ package com.hou.guanggu.Infosource.checkWebsite.model;
 public class Infosource {
 	private int id;
 	private int freq;
+	private String url;
+	private String website;
+
+	private int searchNum;
+	private int newDocNum;
+	private int docNum;
 
 	public int getId() {
 		return id;
@@ -25,6 +31,22 @@ public class Infosource {
 		this.freq = freq;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
 	public Infosource(int id, int freq) {
 		this.id = id;
 		this.freq = freq;
@@ -32,5 +54,29 @@ public class Infosource {
 
 	public Infosource(int id) {
 		this.id = id;
+	}
+
+	public int getSearchNum() {
+		return searchNum;
+	}
+
+	public void setSearchNum(int searchNum) {
+		this.searchNum = searchNum;
+	}
+
+	public int getNewDocNum() {
+		return newDocNum;
+	}
+
+	public void setNewDocNum(int newDocNum) {
+		this.newDocNum = newDocNum;
+	}
+
+	public int getDocNum() {
+		return docNum;
+	}
+
+	public void setDocNum(int docNum) {
+		this.docNum = docNum;
 	}
 }

@@ -1,8 +1,8 @@
 package com.hou.guanggu.Infosource;
 
-import com.hou.guanggu.Infosource.checkWebsite.Info;
-import com.hou.guanggu.Infosource.checkWebsite.InfoStatus;
 import com.hou.guanggu.Infosource.checkWebsite.dao.KeywordDao;
+import com.hou.guanggu.Infosource.checkWebsite.model.Info;
+import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
 
 /**
  * @author houweitao

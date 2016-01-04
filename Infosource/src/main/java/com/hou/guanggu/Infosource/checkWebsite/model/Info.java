@@ -1,4 +1,4 @@
-package com.hou.guanggu.Infosource.checkWebsite;
+package com.hou.guanggu.Infosource.checkWebsite.model;
 
 /**
  * @author houweitao

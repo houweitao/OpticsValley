@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.hou.guanggu.Infosource.checkWebsite.model.Info;
+import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
+
 /**
  * @author houweitao
  * @date 2015年12月28日 下午2:42:26

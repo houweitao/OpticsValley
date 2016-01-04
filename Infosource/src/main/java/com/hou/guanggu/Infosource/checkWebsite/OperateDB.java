@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
 import com.hou.guanggu.Infosource.checkWebsite.dao.KeywordDao;
+import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 
 /**
  * @author houweitao

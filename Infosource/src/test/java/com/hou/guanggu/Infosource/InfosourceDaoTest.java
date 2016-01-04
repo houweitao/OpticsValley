@@ -2,10 +2,10 @@ package com.hou.guanggu.Infosource;
 
 import org.junit.Test;
 
-import com.hou.guanggu.Infosource.checkWebsite.Info;
-import com.hou.guanggu.Infosource.checkWebsite.InfoStatus;
 import com.hou.guanggu.Infosource.checkWebsite.OperateDB;
 import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
+import com.hou.guanggu.Infosource.checkWebsite.model.Info;
+import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
 
 /**

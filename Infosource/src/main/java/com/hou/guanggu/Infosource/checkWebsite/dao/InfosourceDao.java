@@ -5,15 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.fastdb.DB;
 import org.fastdb.DBQuery;
+import org.fastdb.DBRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.hou.guanggu.Infosource.checkWebsite.ConnectionFactory;
-import com.hou.guanggu.Infosource.checkWebsite.Info;
+import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
+import com.hou.guanggu.Infosource.checkWebsite.model.Keyword;
 
 /**
  * @author houweitao
@@ -29,6 +33,7 @@ public class InfosourceDao {
 		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
 		nativeQuery.setParameter(1, id);
 		int p = 1;
+
 		int nowFreq = nativeQuery.findUnique().getInt("freq");
 //				.executeUpdate();
 		System.out.println(nowFreq);
@@ -39,5 +44,24 @@ public class InfosourceDao {
 		updateQuery.setParameter(p++, id);
 		updateQuery.executeUpdate();
 //		log.info("插入成功！");
+	}
+
+	//暂时没用？
+	public List<Infosource> findList(Info info) {
+		List<Infosource> list = new LinkedList<Infosource>();
+
+		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
+		nativeQuery.setParameter(1, id);
+
+		DBRow row = nativeQuery.findUnique();
+
+//		Infosource in = new Infosource(2);
+
+		return list;
+	}
+	
+	public void update(Infosource info){
+		DBQuery update = DB.createNativeQuery("update `wdyq_report_infosource` set `freq` =? where `id`=?");
+
 	}
 }
