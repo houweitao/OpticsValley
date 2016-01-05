@@ -40,7 +40,7 @@ public class AnalyseLog {
 
 	void readLog(List<Info> normaiList, List<Info> abnormaiList) {
 		try {
-			FileInputStream is = new FileInputStream("recources/log.log");
+			FileInputStream is = new FileInputStream("recources/spring.log");
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String line;
