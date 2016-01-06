@@ -15,6 +15,19 @@ import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 public class OperateDB {
 	private static final Logger log = LoggerFactory.getLogger(OperateDB.class);
 
+	//插入数据库。
+	public void insertDB(Info info) {
+		if (info.getInfomation().charAt(0) == 'i') {
+			InfosourceDao dao = new InfosourceDao();
+			
+			
+			
+		} else if (info.getInfomation().charAt(0) == 's') {
+			KeywordDao dao = new KeywordDao();
+		}
+	}
+
+	//修改爬取的频率
 	public void dealDB(Info info) {
 		if (info.getInfomation().charAt(0) == 'i') {
 			//信息源

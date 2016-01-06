@@ -16,22 +16,19 @@ import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
 public class InfosourceDaoTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Info info = new Info(InfoStatus.LOW, "i-149471");
-		Infosource infosource = new Infosource(1416);
-
-		InfosourceDao infosourceDao = new InfosourceDao();
-//		infosourceDao.updateFreq(infosource, 1);
-
-		info = new Info(InfoStatus.LOW, "i-1416");
-		infosourceDao.updateFreqFastDB(info, 100);
+		InfosourceDao dao=new InfosourceDao();
+		Infosource infosource=new Infosource(0);
+		infosource.setTime("2015-09-23 12:57:58.50");
+		System.out.println(dao.isNew(infosource));
+		
+		
 	}
 
-	@Test
-	void testFastDB() {
-		System.out.println("test");
-		Info info = new Info(InfoStatus.LOW, "i-1416");
-		InfosourceDao infosourceDao = new InfosourceDao();
-		infosourceDao.updateFreqFastDB(info, 100);
-	}
+//	@Test
+//	void testFastDB() {
+//		System.out.println("test");
+//		Info info = new Info(InfoStatus.LOW, "i-1416");
+//		InfosourceDao infosourceDao = new InfosourceDao();
+//		infosourceDao.updateFreqFastDB(info, 100);
+//	}
 }

@@ -8,6 +8,17 @@ package com.hou.guanggu.Infosource.checkWebsite.model;
 public class Info {
 	private InfoStatus status;
 	private String infomation;
+	private int docNum;
+	private int newDocNum;
+	private String time;
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	public InfoStatus getStatus() {
 		return status;
@@ -25,9 +36,28 @@ public class Info {
 		this.infomation = infomation;
 	}
 
-	public Info(InfoStatus status, String infomation) {
+	public int getDocNum() {
+		return docNum;
+	}
+
+	public void setDocNum(int docNum) {
+		this.docNum = docNum;
+	}
+
+	public int getNewDocNum() {
+		return newDocNum;
+	}
+
+	public void setNewDocNum(int newDocNum) {
+		this.newDocNum = newDocNum;
+	}
+
+	public Info(InfoStatus status, String infomation, int docNum, int newDocNum,String time) {
 		this.status = status;
 		this.infomation = infomation;
+		this.docNum = docNum;
+		this.newDocNum = newDocNum;
+		this.time=time;
 	}
 
 }

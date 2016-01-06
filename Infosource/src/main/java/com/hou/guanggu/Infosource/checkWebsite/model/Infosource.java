@@ -15,6 +15,36 @@ public class Infosource {
 	private int newDocNum;
 	private int docNum;
 
+	private String time;
+
+	public Infosource(int id, int freq) {
+		this.id = id;
+		this.freq = freq;
+	}
+
+	public Infosource(int id) {
+		this.id = id;
+	}
+
+	public Infosource(int id, int freq, String url, String website, int newDocNum, int docNum, String time) {
+		this.id = id;
+		this.freq = freq;
+		this.freq = freq;
+		this.url = url;
+		this.website = website;
+		this.newDocNum = newDocNum;
+		this.docNum = docNum;
+		this.time = time;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -45,15 +75,6 @@ public class Infosource {
 
 	public void setWebsite(String website) {
 		this.website = website;
-	}
-
-	public Infosource(int id, int freq) {
-		this.id = id;
-		this.freq = freq;
-	}
-
-	public Infosource(int id) {
-		this.id = id;
 	}
 
 	public int getSearchNum() {

@@ -11,12 +11,12 @@ import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
 
 public class KeywordDaoTest {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String infomation = "s-1-496";
-		KeywordDao dao = new KeywordDao();
-		Info info = new Info(InfoStatus.HIGH, infomation);
-		dao.updateFreqFastDB(info, 100);
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		String infomation = "s-1-496";
+//		KeywordDao dao = new KeywordDao();
+//		Info info = new Info(InfoStatus.HIGH, infomation);
+//		dao.updateFreqFastDB(info, 100);
+//	}
 
 }

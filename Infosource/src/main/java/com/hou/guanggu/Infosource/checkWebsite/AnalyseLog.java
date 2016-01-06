@@ -54,7 +54,9 @@ public class AnalyseLog {
 							normaiList.add(info);
 							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
 						} else if (line.contains("Failed to access")) {
-							Info info = new Info(InfoStatus.NOTEXIST, getAbnormal(line));
+							String[] tmp = line.split(" ");
+							String time = tmp[0] + " " + tmp[1];
+							Info info = new Info(InfoStatus.NOTEXIST, getAbnormal(line), 0, 0, time);
 							abnormaiList.add(info);
 							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
 						}
@@ -97,10 +99,10 @@ public class AnalyseLog {
 			infomation = param.substring(1, param.length() - 1);
 		}
 
-		return new Info(getNum(str), infomation);
+		return getInfo(str, infomation);
 	}
 
-	InfoStatus getNum(String str) {
+	Info getInfo(String str, String infomation) {
 		Pattern p = Pattern.compile("[0-9\\.]+");
 		Matcher m = p.matcher(str);
 
@@ -115,16 +117,23 @@ public class AnalyseLog {
 			second = Integer.valueOf(m.group());
 		}
 
+		InfoStatus status = null;
+
 		if (second == 0)
-			return InfoStatus.BAD;
+			status = InfoStatus.BAD;
 		else {
 			double res = (double) (first / second);
 			if (res < 0.2)
-				return InfoStatus.HIGH;
+				status = InfoStatus.HIGH;
 			else if (res > 0.618)
-				return InfoStatus.LOW;
+				status = InfoStatus.LOW;
 			else
-				return InfoStatus.NICE;
+				status = InfoStatus.NICE;
 		}
+
+		String[] tmp = str.split(" ");
+		String time = tmp[0] + " " + tmp[1];
+
+		return new Info(status, infomation, first, second, time);
 	}
 }
