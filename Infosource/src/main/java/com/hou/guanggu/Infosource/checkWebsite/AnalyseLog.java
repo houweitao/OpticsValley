@@ -33,9 +33,18 @@ public class AnalyseLog {
 		infoList.addAll(abnormaiList);
 		infoList.addAll(normaiList);
 
-		for (Info info : infoList) {
-			operate.dealDB(info);
+		for (Info info : normaiList) {
+			operate.insertDB(info);
 		}
+
+		for (Info info : abnormaiList) {
+			operate.insertDB(info);
+		}
+
+//		for (Info info : infoList) {
+//			System.out.println("before： " + info.getInfomation() + "  " + info.getNewDocNum() + "," + info.getDocNum());
+//			operate.dealDB(info);
+//		}
 	}
 
 	void readLog(List<Info> normaiList, List<Info> abnormaiList) {
@@ -52,13 +61,15 @@ public class AnalyseLog {
 						if (line.contains("out of")) {
 							Info info = getNormal(line.split(" : ")[1]);
 							normaiList.add(info);
-							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
+							System.out.println("info: " + info.getInfomation() + "," + info.getStatus() + ";  source: "
+									+ info.getInfomation() + "  doc " + info.getDocNum());
 						} else if (line.contains("Failed to access")) {
 							String[] tmp = line.split(" ");
 							String time = tmp[0] + " " + tmp[1];
 							Info info = new Info(InfoStatus.NOTEXIST, getAbnormal(line), 0, 0, time);
 							abnormaiList.add(info);
-							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation());
+							System.out.println("info: " + info.getStatus() + ";  source: " + info.getInfomation()
+									+ "  doc " + info.getDocNum());
 						}
 					}
 				}
@@ -134,6 +145,6 @@ public class AnalyseLog {
 		String[] tmp = str.split(" ");
 		String time = tmp[0] + " " + tmp[1];
 
-		return new Info(status, infomation, first, second, time);
+		return new Info(status, infomation, second, first, time);
 	}
 }

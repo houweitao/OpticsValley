@@ -19,9 +19,7 @@ public class OperateDB {
 	public void insertDB(Info info) {
 		if (info.getInfomation().charAt(0) == 'i') {
 			InfosourceDao dao = new InfosourceDao();
-			
-			
-			
+			dao.persist(info);
 		} else if (info.getInfomation().charAt(0) == 's') {
 			KeywordDao dao = new KeywordDao();
 		}

@@ -1,13 +1,5 @@
 package com.hou.guanggu.Infosource.checkWebsite.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.LinkedList;
-import java.util.List;
-
 import org.apache.commons.codec.digest.DigestUtils;
 import org.fastdb.DB;
 import org.fastdb.DBQuery;
@@ -15,10 +7,8 @@ import org.fastdb.DBRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hou.guanggu.Infosource.checkWebsite.ConnectionFactory;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
-import com.hou.guanggu.Infosource.checkWebsite.model.Keyword;
 
 /**
  * @author houweitao
@@ -51,20 +41,6 @@ public class InfosourceDao {
 		return row;
 	}
 
-	//暂时没用？
-//	public List<Infosource> findList(Info info) {
-//		List<Infosource> list = new LinkedList<Infosource>();
-//
-//		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
-//		nativeQuery.setParameter(1, id);
-//
-//		DBRow row = nativeQuery.findUnique();
-//
-////		Infosource in = new Infosource(2);
-//
-//		return list;
-//	}
-
 	public void persist(Info info) {
 		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
 		DBRow row = getInfoSource(id);
@@ -72,30 +48,48 @@ public class InfosourceDao {
 		Infosource infosource = new Infosource(id, row.getInt("freq"), row.getString("url"), row.getString("website"),
 				info.getNewDocNum(), info.getDocNum(), info.getTime());
 
-		DBQuery update = DB.createNativeQuery("update `wdyq_report_infosource` set set `url`=?,`freq` =? where `id`=?");
-		DBQuery insert = DB.createNativeQuery(
-				"INSERT INTO wdyq_report_infosource(id,url,website,searchNum,newDocNum,docNum,freq) VALUES(?,?,?,?,?,?,?)");
-		if (!isNew(infosource)) {
-//			update
+		DBRow find = isNew(infosource);
+
+		if (find != null) {
+			DBQuery update = DB.createNativeQuery(
+					"update `wdyq_report_infosource` set `searchNum`=?,`newDocNum`=?,`docNum`=? where `md5`=?");
+			log.info(id + "," + infosource.getWebsite() + " 不是新的");
+			int p = 1;
+			update.setParameter(p++, find.getInt("searchNum") + 1);
+			update.setParameter(p++, find.getInt("newDocNum") + info.getNewDocNum());
+			update.setParameter(p++, find.getInt("docNum") + info.getDocNum());
+			update.setParameter(p++, DigestUtils.md5Hex(id + "md5").toUpperCase());
+			log.info(update.toString());
+			update.executeUpdate();
 		} else {
-//			insert;
+			log.info(id + "," + row.getString("website") + " 是新的");
+			DBQuery insert = DB.createNativeQuery(
+					"INSERT INTO wdyq_report_infosource(id,url,website,searchNum,newDocNum,docNum,freq,md5) VALUES(?,?,?,?,?,?,?,?)");
+			int p = 1;
+			insert.setParameter(p++, row.getInt("id"));
+			insert.setParameter(p++, row.getString("url"));
+			insert.setParameter(p++, row.getString("website"));
+			insert.setParameter(p++, 1);
+			insert.setParameter(p++, info.getNewDocNum());
+			insert.setParameter(p++, info.getDocNum());
+			insert.setParameter(p++, infosource.getFreq());
+			insert.setParameter(p++, DigestUtils.md5Hex(id + "md5").toUpperCase());
+
+			insert.executeUpdate();
 		}
 
 	}
 
-	public boolean isNew(Infosource infosource) {
-		// TODO Auto-generated method stub
-		String md5 = DigestUtils.md5Hex(infosource.getId() + infosource.getTime()).toUpperCase();
-		System.out.println(md5);
+	public DBRow isNew(Infosource infosource) {
+		String md5 = DigestUtils.md5Hex(infosource.getId() + "md5").toUpperCase();
 		DBQuery inq = DB.createNativeQuery("SELECT * from wdyq_report_infosource WHERE md5  = ?");
 		inq.setParameter(1, md5);
 		DBRow row = inq.findUnique();
 		System.out.println(row);
-		
-		
+
 		if (row == null)
-			return true;
+			return null;
 		else
-			return false;
+			return row;
 	}
 }
