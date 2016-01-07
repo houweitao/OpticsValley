@@ -22,6 +22,7 @@ public class OperateDB {
 			dao.persist(info);
 		} else if (info.getInfomation().charAt(0) == 's') {
 			KeywordDao dao = new KeywordDao();
+			dao.persist(info);
 		}
 	}
 

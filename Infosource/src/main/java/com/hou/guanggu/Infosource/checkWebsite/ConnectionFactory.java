@@ -25,7 +25,7 @@ public class ConnectionFactory {
 		Properties prop = new Properties();
 		try {
 			InputStream in = ConnectionFactory.class.getClassLoader()
-					.getResourceAsStream("docdb.properties");
+					.getResourceAsStream("wdyq.properties");
 			prop.load(in);
 		} catch (Exception e) {
 			System.out.println("=====无配置文件======");

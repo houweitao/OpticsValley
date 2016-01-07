@@ -14,6 +14,7 @@ public class Infosource {
 	private int searchNum;
 	private int newDocNum;
 	private int docNum;
+	private InfoStatus status;
 
 	private String time;
 
@@ -26,7 +27,8 @@ public class Infosource {
 		this.id = id;
 	}
 
-	public Infosource(int id, int freq, String url, String website, int newDocNum, int docNum, String time) {
+	public Infosource(int id, int freq, String url, String website, int newDocNum, int docNum, InfoStatus status,
+			String time) {
 		this.id = id;
 		this.freq = freq;
 		this.freq = freq;
@@ -34,6 +36,7 @@ public class Infosource {
 		this.website = website;
 		this.newDocNum = newDocNum;
 		this.docNum = docNum;
+		this.status = status;
 		this.time = time;
 	}
 
@@ -99,5 +102,13 @@ public class Infosource {
 
 	public void setDocNum(int docNum) {
 		this.docNum = docNum;
+	}
+
+	public InfoStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(InfoStatus status) {
+		this.status = status;
 	}
 }

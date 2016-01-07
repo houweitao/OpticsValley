@@ -10,8 +10,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.mortbay.log.Log;
+
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
+import com.hou.guanggu.Infosource.checkWebsite.util.ExcelUtil;
 
 /**
  * @author houweitao
@@ -20,6 +23,7 @@ import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
 
 public class AnalyseLog {
 	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
 		AnalyseLog analyseLog = new AnalyseLog();
 		OperateDB operate = new OperateDB();
 		List<Info> infoList = new ArrayList<Info>();
@@ -40,6 +44,11 @@ public class AnalyseLog {
 		for (Info info : abnormaiList) {
 			operate.insertDB(info);
 		}
+
+		ExcelUtil excelUtil = new ExcelUtil();
+		excelUtil.makeExcel();
+
+		Log.info("耗时： " + (System.currentTimeMillis() - start) / 10 + " 秒");
 
 //		for (Info info : infoList) {
 //			System.out.println("before： " + info.getInfomation() + "  " + info.getNewDocNum() + "," + info.getDocNum());

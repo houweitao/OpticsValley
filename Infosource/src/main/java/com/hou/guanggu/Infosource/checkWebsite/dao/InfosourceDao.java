@@ -1,5 +1,9 @@
 package com.hou.guanggu.Infosource.checkWebsite.dao;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.fastdb.DB;
 import org.fastdb.DBQuery;
@@ -7,8 +11,11 @@ import org.fastdb.DBRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hou.guanggu.Infosource.checkWebsite.ConnectionFactory;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
+import java.sql.Connection;
+import com.mysql.jdbc.Statement;
 
 /**
  * @author houweitao
@@ -46,25 +53,25 @@ public class InfosourceDao {
 		DBRow row = getInfoSource(id);
 
 		Infosource infosource = new Infosource(id, row.getInt("freq"), row.getString("url"), row.getString("website"),
-				info.getNewDocNum(), info.getDocNum(), info.getTime());
+				info.getNewDocNum(), info.getDocNum(), info.getStatus(), info.getTime());
 
 		DBRow find = isNew(infosource);
 
 		if (find != null) {
 			DBQuery update = DB.createNativeQuery(
-					"update `wdyq_report_infosource` set `searchNum`=?,`newDocNum`=?,`docNum`=? where `md5`=?");
+					"update `wdyq_report_infosource` set `searchNum`=?,`newDocNum`=?,`docNum`=?,`status`=? where `md5`=?");
 			log.info(id + "," + infosource.getWebsite() + " 不是新的");
 			int p = 1;
 			update.setParameter(p++, find.getInt("searchNum") + 1);
 			update.setParameter(p++, find.getInt("newDocNum") + info.getNewDocNum());
 			update.setParameter(p++, find.getInt("docNum") + info.getDocNum());
+			update.setParameter(p++, info.getStatus().toString());
 			update.setParameter(p++, DigestUtils.md5Hex(id + "md5").toUpperCase());
-			log.info(update.toString());
 			update.executeUpdate();
 		} else {
 			log.info(id + "," + row.getString("website") + " 是新的");
 			DBQuery insert = DB.createNativeQuery(
-					"INSERT INTO wdyq_report_infosource(id,url,website,searchNum,newDocNum,docNum,freq,md5) VALUES(?,?,?,?,?,?,?,?)");
+					"INSERT INTO wdyq_report_infosource(id,url,website,searchNum,newDocNum,docNum,freq,status,md5) VALUES(?,?,?,?,?,?,?,?,?)");
 			int p = 1;
 			insert.setParameter(p++, row.getInt("id"));
 			insert.setParameter(p++, row.getString("url"));
@@ -73,6 +80,7 @@ public class InfosourceDao {
 			insert.setParameter(p++, info.getNewDocNum());
 			insert.setParameter(p++, info.getDocNum());
 			insert.setParameter(p++, infosource.getFreq());
+			insert.setParameter(p++, info.getStatus().toString());
 			insert.setParameter(p++, DigestUtils.md5Hex(id + "md5").toUpperCase());
 
 			insert.executeUpdate();
@@ -91,5 +99,19 @@ public class InfosourceDao {
 			return null;
 		else
 			return row;
+	}
+
+	public ResultSet getAll() {
+		Connection conn = ConnectionFactory.getInstance().makeConnection();
+		Statement st;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from wdyq_report_infosource");
+			return rs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
