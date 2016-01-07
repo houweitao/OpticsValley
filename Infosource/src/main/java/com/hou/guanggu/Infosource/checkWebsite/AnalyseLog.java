@@ -48,7 +48,7 @@ public class AnalyseLog {
 		ExcelUtil excelUtil = new ExcelUtil();
 		excelUtil.makeExcel();
 
-		Log.info("耗时： " + (System.currentTimeMillis() - start) / 10 + " 秒");
+		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
 
 //		for (Info info : infoList) {
 //			System.out.println("before： " + info.getInfomation() + "  " + info.getNewDocNum() + "," + info.getDocNum());
