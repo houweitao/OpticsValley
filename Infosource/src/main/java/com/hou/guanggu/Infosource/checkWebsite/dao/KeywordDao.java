@@ -109,7 +109,7 @@ public class KeywordDao {
 		keyword.setName(engine.getName());
 		keyword.setUrl(engine.getUrl());
 		keyword.setEngine(engineId);
-		
+
 		DBRow find = isNew(keyword);
 		if (find != null) {
 //			update
