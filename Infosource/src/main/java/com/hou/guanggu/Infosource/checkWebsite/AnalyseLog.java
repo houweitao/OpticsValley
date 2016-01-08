@@ -19,6 +19,7 @@ import com.hou.guanggu.Infosource.checkWebsite.util.ExcelUtil;
 /**
  * @author houweitao
  * @date 2015年12月28日 下午2:42:26
+ * mysql数据库：43分钟；redis：11分钟。
  */
 
 public class AnalyseLog {
