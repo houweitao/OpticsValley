@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
 import com.hou.guanggu.Infosource.checkWebsite.dao.KeywordDao;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
+
+import redis.clients.jedis.Jedis;
 
 /**
  * @author houweitao
@@ -14,6 +17,10 @@ import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 
 public class OperateDB {
 	private static final Logger log = LoggerFactory.getLogger(OperateDB.class);
+	private InfosourceDao infosourceDao = new InfosourceDao();
+	private KeywordDao keywordDao = new KeywordDao();
+	private final String saveInfosource = "LOG$SAVE$INFOSOURCE";
+	private final String saveKeyword = "LOG$SAVE$KEYWORD";
 
 	//插入数据库。
 	public void insertDB(Info info) {
@@ -25,15 +32,23 @@ public class OperateDB {
 			dao.persist(info);
 		}
 	}
-	
+
 	//插入数据库。用redis。
 	public void insertByRedis(Info info) {
 		if (info.getInfomation().charAt(0) == 'i') {
-//			InfosourceDao dao = new InfosourceDao();
-//			dao.persistByRedis(info);
+			try {
+				infosourceDao.persistTotalyByRedis(info);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if (info.getInfomation().charAt(0) == 's') {
-			KeywordDao dao = new KeywordDao();
-			dao.persistByRedis(info);
+			try {
+				keywordDao.persistTotalyByRedis(info);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -93,5 +108,12 @@ public class OperateDB {
 		} else {
 			log.info("not unified input..");
 		}
+	}
+
+	public void cleanRedis() {
+		// TODO Auto-generated method stub
+		Jedis jedis = new JedisFactory().getInstance();
+		jedis.del(saveKeyword);
+		jedis.del(saveInfosource);
 	}
 }

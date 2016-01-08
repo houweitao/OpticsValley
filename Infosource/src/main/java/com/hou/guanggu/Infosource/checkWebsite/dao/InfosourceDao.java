@@ -16,6 +16,7 @@ import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 
+import java.net.SocketTimeoutException;
 import java.sql.Connection;
 import com.mysql.jdbc.Statement;
 
@@ -30,6 +31,7 @@ public class InfosourceDao {
 	private static final Logger log = LoggerFactory.getLogger(InfosourceDao.class);
 	private Jedis jedis = new JedisFactory().getInstance();
 	private String key = "LOG$INFOSOURCE";
+	private String save = "LOG$SAVE$INFOSOURCE";
 	private DBQuery nativeQuery = DB.createNativeQuery("select * from `wdyq_infosource_copy` where `id`=?");
 	private DBQuery updateQuery = DB.createNativeQuery("update `wdyq_infosource_copy` set `freq` =? where `id`=?");
 
@@ -136,6 +138,31 @@ public class InfosourceDao {
 			insert.executeUpdate();
 		}
 
+	}
+
+	public void persistTotalyByRedis(Info info) throws Exception {
+		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
+		String json = jedis.hget(key, info.getInfomation());
+		Infosource infosource = JSON.parseObject(json, Infosource.class);
+
+		infosource.setNewDocNum(info.getNewDocNum());
+		infosource.setDocNum(info.getDocNum());
+		infosource.setTime(info.getTime());
+		infosource.setStatus(info.getStatus());
+
+		String old = jedis.hget(save, info.getInfomation());
+		if (old == null || old.length() == 0) {
+			log.info(infosource.getWebsite()+"is new");
+			infosource.setSearchNum(1);
+			jedis.hset(save, info.getInfomation(), JSON.toJSONString(infosource));
+		} else {
+			log.info(infosource.getWebsite()+"is not new");
+			Infosource oldInfosource = JSON.parseObject(old, Infosource.class);
+			infosource.setDocNum(infosource.getDocNum() + oldInfosource.getDocNum());
+			infosource.setNewDocNum(infosource.getNewDocNum() + oldInfosource.getNewDocNum());
+			infosource.setSearchNum(oldInfosource.getSearchNum() + 1);
+			jedis.hset(save, info.getInfomation(), JSON.toJSONString(infosource));
+		}
 	}
 
 	public DBRow isNew(Infosource infosource) {

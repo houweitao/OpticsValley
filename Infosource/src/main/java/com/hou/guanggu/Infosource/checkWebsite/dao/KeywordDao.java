@@ -31,6 +31,7 @@ public class KeywordDao {
 	private Jedis jedis = new JedisFactory().getInstance();
 	private String keyKeyword = "LOG$KEYWORD";
 	private String keyEngine = "LOG$ENGINE";
+	private String save = "LOG$SAVE$KEYWORD";
 	DBQuery nativeQuery = DB.createNativeQuery("select * from `wdyq_keywords_copy` where `id`=?");
 	DBQuery updateQuery = DB.createNativeQuery("update `wdyq_keywords_copy` set `freq` =? where `id`=?");
 
@@ -141,6 +142,38 @@ public class KeywordDao {
 			insert.setParameter(p++, DigestUtils.md5Hex(engineId + "-" + id).toUpperCase());
 
 			insert.executeUpdate();
+		}
+	}
+
+	public void persistTotalyByRedis(Info info) throws Exception {
+		int id = Integer.valueOf(info.getInfomation().split("-")[2]);
+		int engineId = Integer.valueOf(info.getInfomation().split("-")[1]);
+
+		String jsonKeyword = jedis.hget(keyKeyword, "s-" + id);
+		String jsonEngine = jedis.hget(keyEngine, "e-" + engineId);
+
+		Keyword keyword = JSON.parseObject(jsonKeyword, Keyword.class);
+		Engine engine = JSON.parseObject(jsonEngine, Engine.class);
+
+		keyword.setDocNum(info.getDocNum());
+		keyword.setNewDocNum(info.getNewDocNum());
+		keyword.setStatus(info.getStatus());
+		keyword.setName(engine.getName());
+		keyword.setUrl(engine.getUrl());
+		keyword.setEngine(engineId);
+		keyword.setSearchNum(1);
+
+		String old = jedis.hget(save, jsonKeyword);
+		if (old == null || old.length() == 0) {
+			log.info(keyword.getName() + "is new");
+			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));
+		} else {
+			log.info(keyword.getName() + "is not new");
+			Keyword oldKeyword = JSON.parseObject(old, Keyword.class);
+			keyword.setDocNum(keyword.getDocNum() + oldKeyword.getDocNum());
+			keyword.setNewDocNum(keyword.getNewDocNum() + oldKeyword.getNewDocNum());
+			keyword.setSearchNum(oldKeyword.getSearchNum() + 1);
+			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));
 		}
 	}
 

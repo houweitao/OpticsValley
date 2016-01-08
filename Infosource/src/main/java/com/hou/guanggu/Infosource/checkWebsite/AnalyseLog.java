@@ -37,6 +37,8 @@ public class AnalyseLog {
 		infoList.addAll(abnormaiList);
 		infoList.addAll(normaiList);
 
+//		operate.cleanRedis();
+		
 		for (Info info : normaiList) {
 			operate.insertByRedis(info);
 		}

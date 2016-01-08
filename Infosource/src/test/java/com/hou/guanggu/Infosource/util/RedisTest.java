@@ -28,10 +28,14 @@ public class RedisTest {
 		RedisTest test = new RedisTest();
 //		test.testList(jedis);
 
-		System.out.println("get size: "+jedis.hget("LOG$KEYWORD", "s-322861"));
-		System.out.println("get size: "+jedis.hlen("LOG$KEYWORD"));
+		System.out.println("get size: " + jedis.hget("LOG$KEYWORD", "s-322861"));
+		System.out.println("get size: " + jedis.hlen("LOG$KEYWORD"));
 
 //		System.out.println(jedis.exists("TEST$JEDIS"));
+
+		for (int i = 4444; i < 20000; i++) {
+			System.out.println("get size: " + jedis.hget("LOG$KEYWORD", "s-" + i));
+		}
 	}
 
 	public void testList(Jedis redis) {

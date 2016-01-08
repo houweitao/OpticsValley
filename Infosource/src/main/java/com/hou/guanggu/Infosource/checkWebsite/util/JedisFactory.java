@@ -19,8 +19,8 @@ public class JedisFactory {
 			InputStream in = ConnectionFactory.class.getClassLoader().getResourceAsStream("redis.properties");
 			redisConf.load(in);
 
-			jedis = new Jedis(redisConf.getProperty("redis.host"),
-					Integer.valueOf(redisConf.getProperty("redis.port")));
+			jedis = new Jedis(redisConf.getProperty("redis.host"), Integer.valueOf(redisConf.getProperty("redis.port")),
+					10000);
 		} catch (Exception e) {
 			System.out.println("=====无配置文件======");
 		}
