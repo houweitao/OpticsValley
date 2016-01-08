@@ -27,6 +27,9 @@ public class Infosource {
 		this.id = id;
 	}
 
+	public Infosource() {
+	}
+
 	public Infosource(int id, int freq, String url, String website, int newDocNum, int docNum, InfoStatus status,
 			String time) {
 		this.id = id;

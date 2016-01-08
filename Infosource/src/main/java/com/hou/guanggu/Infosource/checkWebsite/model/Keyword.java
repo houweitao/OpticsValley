@@ -36,6 +36,13 @@ public class Keyword {
 		this.freq = freq;
 	}
 
+	public Keyword(int id) {
+		this.id = id;
+	}
+
+	public Keyword() {
+	}
+
 	public InfoStatus getStatus() {
 		return status;
 	}
