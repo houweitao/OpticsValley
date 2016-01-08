@@ -1,14 +1,17 @@
 package com.hou.guanggu.Infosource.checkWebsite.util;
 
+import java.net.SocketTimeoutException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.alibaba.fastjson.JSON;
 import com.hou.guanggu.Infosource.checkWebsite.ConnectionFactory;
-import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
 import com.hou.guanggu.Infosource.checkWebsite.model.Engine;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
 import com.hou.guanggu.Infosource.checkWebsite.model.Keyword;
@@ -22,6 +25,8 @@ import redis.clients.jedis.Jedis;
  */
 
 public class JedisOperater {
+	private static final Logger log = LoggerFactory.getLogger(JedisOperater.class);
+
 	private static Jedis jedis;
 
 	static {
@@ -30,27 +35,36 @@ public class JedisOperater {
 
 	public void refresh() {
 		del();
-
-		HashMap<String, String> infosourceList = getAllinfosource();
-		for (Entry<String, String> entry : infosourceList.entrySet()) {
-			jedis.hset("LOG$INFOSOURCE", entry.getKey(), entry.getValue());
-		}
-
-		HashMap<String, String> keywordList = getAllkeyword();
-		for (Entry<String, String> entry : keywordList.entrySet()) {
-			jedis.hset("LOG$KEYWORD", entry.getKey(), entry.getValue());
-		}
-
-		HashMap<String, String> engineList = getAllengine();
-		for (Entry<String, String> entry : engineList.entrySet()) {
-			jedis.hset("LOG$ENGINE", entry.getKey(), entry.getValue());
-		}
+		init();
 	}
 
-	void del() {
+	public void init() {
+		log.info("beigin init..");
+
+		log.info("fetch engine..");
+		HashMap<String, String> engineList = getAllengine();
+		jedis.hmset("LOG$ENGINE", engineList);
+		log.info("end of fetch engine..");
+
+		log.info("fetch infosoure..");
+		HashMap<String, String> infosourceList = getAllinfosource();
+		jedis.hmset("LOG$INFOSOURCE", infosourceList);
+		log.info("end of fetch infosource..");
+
+		log.info("fetch keyword..");
+		HashMap<String, String> keywordList = getAllkeyword();
+		jedis.hmset("LOG$KEYWORD", keywordList);
+		log.info("end of fetch keyword..");
+
+		log.info("end of init");
+	}
+
+	public void del() {
+		log.info("begin of del");
 		jedis.del("LOG$INFOSOURCE");
 		jedis.del("LOG$KEYWORD");
 		jedis.del("LOG$ENGINE");
+		log.info("end of del");
 	}
 
 	HashMap<String, String> getAllinfosource() {
@@ -73,7 +87,7 @@ public class JedisOperater {
 				infosource.setWebsite(website);
 				hm.put("i-" + id, JSON.toJSONString(infosource));
 			}
-
+			conn.close();
 			return hm;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -88,7 +102,7 @@ public class JedisOperater {
 		try {
 			HashMap<String, String> hm = new HashMap<String, String>();
 			st = (Statement) conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from wdyq_keyword");
+			ResultSet rs = st.executeQuery("select * from wdyq_keywords");
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String keyword = rs.getString("keyword");
@@ -98,6 +112,7 @@ public class JedisOperater {
 				key.setKeyword(keyword);
 				hm.put("s-" + id, JSON.toJSONString(key));
 			}
+			conn.close();
 			return hm;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -120,6 +135,7 @@ public class JedisOperater {
 				Engine engine = new Engine(engineId, name, url);
 				hm.put("e-" + engineId, JSON.toJSONString(engine));
 			}
+			conn.close();
 			return hm;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

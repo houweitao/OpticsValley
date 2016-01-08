@@ -11,10 +11,15 @@ import org.fastdb.DBRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.hou.guanggu.Infosource.checkWebsite.ConnectionFactory;
+import com.hou.guanggu.Infosource.checkWebsite.model.Engine;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.Keyword;
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 import com.mysql.jdbc.Statement;
+
+import redis.clients.jedis.Jedis;
 
 /**
  * @author houweitao
@@ -23,6 +28,9 @@ import com.mysql.jdbc.Statement;
 
 public class KeywordDao {
 	private static final Logger log = LoggerFactory.getLogger(KeywordDao.class);
+	private Jedis jedis = new JedisFactory().getInstance();
+	private String keyKeyword = "LOG$KEYWORD";
+	private String keyEngine = "LOG$ENGINE";
 	DBQuery nativeQuery = DB.createNativeQuery("select * from `wdyq_keywords_copy` where `id`=?");
 	DBQuery updateQuery = DB.createNativeQuery("update `wdyq_keywords_copy` set `freq` =? where `id`=?");
 
@@ -51,6 +59,57 @@ public class KeywordDao {
 		Keyword keyword = new Keyword(id, key.getString("keyword"), engineId, engine.getString("name"),
 				engine.getString("url"), key.getInt("freq"), info.getNewDocNum(), info.getDocNum());
 
+		DBRow find = isNew(keyword);
+		if (find != null) {
+//			update
+			DBQuery update = DB.createNativeQuery(
+					"update `wdyq_report_keywords` set `searchNum`=?,`newDocNum`=?,`docNum`=?,`status`=? where `md5`=?");
+			log.info(id + "," + keyword.getEngine() + "," + keyword.getKeyword() + " 不是新的");
+			int p = 1;
+			update.setParameter(p++, find.getInt("searchNum") + 1);
+			update.setParameter(p++, find.getInt("newDocNum") + info.getNewDocNum());
+			update.setParameter(p++, find.getInt("docNum") + info.getDocNum());
+			update.setParameter(p++, info.getStatus().toString());
+			update.setParameter(p++, DigestUtils.md5Hex(engineId + "-" + id).toUpperCase());
+			update.executeUpdate();
+		} else {
+			log.info(id + "," + keyword.getEngine() + "," + keyword.getKeyword() + " 是新的");
+			DBQuery insert = DB.createNativeQuery(
+					"INSERT INTO wdyq_report_keywords(id,keyword,engine,name,url,searchNum,newDocNum,docNum,freq,status,md5) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+			int p = 1;
+			insert.setParameter(p++, keyword.getId());
+			insert.setParameter(p++, keyword.getKeyword());
+			insert.setParameter(p++, keyword.getEngine());
+			insert.setParameter(p++, keyword.getName());
+			insert.setParameter(p++, keyword.getUrl());
+			insert.setParameter(p++, 1);
+			insert.setParameter(p++, info.getNewDocNum());
+			insert.setParameter(p++, info.getDocNum());
+			insert.setParameter(p++, keyword.getFreq());
+			insert.setParameter(p++, info.getStatus().toString());
+			insert.setParameter(p++, DigestUtils.md5Hex(engineId + "-" + id).toUpperCase());
+
+			insert.executeUpdate();
+		}
+	}
+
+	public void persistByRedis(Info info) {
+		int id = Integer.valueOf(info.getInfomation().split("-")[2]);
+		int engineId = Integer.valueOf(info.getInfomation().split("-")[1]);
+
+		String jsonKeyword = jedis.hget(keyKeyword, "s-" + id);
+		String jsonEngine = jedis.hget(keyEngine, "e-" + engineId);
+
+		Keyword keyword = JSON.parseObject(jsonKeyword, Keyword.class);
+		Engine engine = JSON.parseObject(jsonEngine, Engine.class);
+
+		keyword.setDocNum(info.getDocNum());
+		keyword.setNewDocNum(info.getNewDocNum());
+		keyword.setStatus(info.getStatus());
+		keyword.setName(engine.getName());
+		keyword.setUrl(engine.getUrl());
+		keyword.setEngine(engineId);
+		
 		DBRow find = isNew(keyword);
 		if (find != null) {
 //			update

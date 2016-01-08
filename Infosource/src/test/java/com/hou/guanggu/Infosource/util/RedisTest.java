@@ -28,6 +28,9 @@ public class RedisTest {
 		RedisTest test = new RedisTest();
 //		test.testList(jedis);
 
+		System.out.println("get size: "+jedis.hget("LOG$KEYWORD", "s-322861"));
+		System.out.println("get size: "+jedis.hlen("LOG$KEYWORD"));
+
 //		System.out.println(jedis.exists("TEST$JEDIS"));
 	}
 
@@ -45,11 +48,16 @@ public class RedisTest {
 		for (String tmp : list) {
 			System.out.println("get: " + tmp);
 		}
-		System.out.println("size : " + redis.hmget("table", "field1"));
-		System.out.println("size : " + redis.hvals("table"));
+		System.out.println("size : " + redis.hmget(key, "s-4242").get(0));
+		System.out.println("size : " + redis.hmget(key, "s-4242"));
+		System.out.println("size : " + redis.hget(key, "s-4242"));//nice
+		System.out.println("size : " + redis.hvals(key));
+
+//		System.out.println(redis.lrange("WEIXIN$WORD",1, 100));
 
 		System.out.println(redis.exists(key));
-		redis.del(key);
+		System.out.println("delete: " + redis.del(key));
+		System.out.println("delete: " + redis.del(key));
 		System.out.println(redis.exists(key));
 	}
 }

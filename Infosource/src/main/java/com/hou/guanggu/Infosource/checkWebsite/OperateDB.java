@@ -25,6 +25,17 @@ public class OperateDB {
 			dao.persist(info);
 		}
 	}
+	
+	//插入数据库。
+	public void insertByRedis(Info info) {
+		if (info.getInfomation().charAt(0) == 'i') {
+			InfosourceDao dao = new InfosourceDao();
+			dao.persistByRedis(info);
+		} else if (info.getInfomation().charAt(0) == 's') {
+			KeywordDao dao = new KeywordDao();
+			dao.persistByRedis(info);
+		}
+	}
 
 	//修改爬取的频率
 	public void dealDB(Info info) {

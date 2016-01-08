@@ -38,11 +38,11 @@ public class AnalyseLog {
 		infoList.addAll(normaiList);
 
 		for (Info info : normaiList) {
-			operate.insertDB(info);
+			operate.insertByRedis(info);
 		}
 
 		for (Info info : abnormaiList) {
-			operate.insertDB(info);
+			operate.insertByRedis(info);
 		}
 
 		ExcelUtil excelUtil = new ExcelUtil();

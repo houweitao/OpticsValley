@@ -12,12 +12,14 @@ public class Json2OBJtest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Infosource inf=new Infosource(22);
+		Infosource inf = new Infosource(22);
 		inf.setDocNum(222);
-		String json=JSON.toJSONString(inf);
+		inf.setUrl("hhahahaha");
+		String json = JSON.toJSONString(inf);
 		System.out.println(json);
-		Infosource after=JSON.parseObject(json,Infosource.class);
+		Infosource after = JSON.parseObject(json, Infosource.class);
 		System.out.println(after.getId());
+		System.out.println(after.getUrl());
 	}
 
 }
