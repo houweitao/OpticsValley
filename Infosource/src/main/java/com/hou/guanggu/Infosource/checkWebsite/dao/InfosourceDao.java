@@ -141,7 +141,7 @@ public class InfosourceDao {
 	}
 
 	public void persistTotalyByRedis(Info info) throws Exception {
-		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
+//		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
 		String json = jedis.hget(key, info.getInfomation());
 		Infosource infosource = JSON.parseObject(json, Infosource.class);
 
@@ -152,11 +152,12 @@ public class InfosourceDao {
 
 		String old = jedis.hget(save, info.getInfomation());
 		if (old == null || old.length() == 0) {
-			log.info(infosource.getWebsite()+"is new");
+			log.info(infosource.getWebsite()+" is new");
 			infosource.setSearchNum(1);
 			jedis.hset(save, info.getInfomation(), JSON.toJSONString(infosource));
 		} else {
-			log.info(infosource.getWebsite()+"is not new");
+			log.info("old infosource: "+old);
+			log.info(infosource.getWebsite()+" is not new");
 			Infosource oldInfosource = JSON.parseObject(old, Infosource.class);
 			infosource.setDocNum(infosource.getDocNum() + oldInfosource.getDocNum());
 			infosource.setNewDocNum(infosource.getNewDocNum() + oldInfosource.getNewDocNum());

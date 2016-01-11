@@ -169,13 +169,17 @@ public class KeywordDao {
 			log.info(keyword.getName() + "-" + keyword.getName() + "is new");
 			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));
 		} else {
-			log.info(keyword.getName() + "-" + keyword.getName() + "is not new");
+			log.info("old keyword: " + old);
+			log.info(keyword.getName() + "-" + keyword.getName() + " is not new");
 			Keyword oldKeyword = JSON.parseObject(old, Keyword.class);
 			keyword.setDocNum(keyword.getDocNum() + oldKeyword.getDocNum());
 			keyword.setNewDocNum(keyword.getNewDocNum() + oldKeyword.getNewDocNum());
 			keyword.setSearchNum(oldKeyword.getSearchNum() + 1);
 			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));
 		}
+
+		jedis.quit();
+		jedis.disconnect();
 	}
 
 	private DBRow isNew(Keyword keyword) {

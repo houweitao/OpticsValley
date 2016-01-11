@@ -55,11 +55,13 @@ public class AnalyseLog {
 //		operate.cleanRedis();
 
 		for (Info info : normaiList) {
-			operate.insertByRedis(info);
+			if (info != null)
+				operate.insertByRedis(info);
 		}
 
 		for (Info info : abnormaiList) {
-			operate.insertByRedis(info);
+			if (info != null)
+				operate.insertByRedis(info);
 		}
 
 		Map<String, String> reportInfosource = jedis.hgetAll(saveInfosource);
