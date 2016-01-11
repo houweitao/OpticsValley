@@ -43,6 +43,10 @@ public class Infosource {
 		this.time = time;
 	}
 
+	public String toString() {
+		return this.id + "," + this.url + "," + this.website + "," + this.status + "," + this.time;
+	}
+
 	public String getTime() {
 		return time;
 	}

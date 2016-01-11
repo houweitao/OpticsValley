@@ -40,7 +40,7 @@ public class AnalyseLogLocal {
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
 		AnalyseLogLocal analyseLog = new AnalyseLogLocal();
-		HashMap2Excel excel=new HashMap2Excel();
+		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
 		List<Info> infoList = new ArrayList<Info>();
 		List<Info> normaiList = new ArrayList<Info>();
@@ -54,7 +54,7 @@ public class AnalyseLogLocal {
 		log.info("begin of engineDB");
 		HashMap<String, String> engineDB = op.getAllengine();
 		log.info("end of engineDB");
-		
+
 		HashMap<String, Infosource> infosourceReport = new HashMap<String, Infosource>();
 		HashMap<String, Keyword> keywordReport = new HashMap<String, Keyword>();
 
@@ -153,8 +153,7 @@ public class AnalyseLogLocal {
 
 		excel.makeInfosourceExcel(infosourceReport);
 		excel.makeKeywordExcel(keywordReport);
-		
-		
+
 //		ExcelUtil excelUtil = new ExcelUtil();
 //		excelUtil.makeExcel();
 
@@ -178,7 +177,7 @@ public class AnalyseLogLocal {
 						continue;
 					else {
 						if (line.contains("out of")) {
-							Info info = getNormal(line.split(" : ")[1]);
+							Info info = getNormal(line);
 							normaiList.add(info);
 							System.out.println("info: " + info.getInfomation() + "," + info.getStatus() + ";  source: "
 									+ info.getInfomation() + "  doc " + info.getDocNum());
@@ -219,7 +218,8 @@ public class AnalyseLogLocal {
 	}
 
 	//获取正常爬取的组合
-	Info getNormal(String str) {
+	Info getNormal(String line) {
+		String str = line.split(" : ")[1];
 		String infomation = "";
 		Pattern p = Pattern.compile("\\[.*?\\]");// 查找规则公式中大括号以内的字符
 		Matcher m = p.matcher(str);
@@ -229,12 +229,12 @@ public class AnalyseLogLocal {
 			infomation = param.substring(1, param.length() - 1);
 		}
 
-		return getInfo(str, infomation);
+		return getInfo(line, infomation);
 	}
 
-	Info getInfo(String str, String infomation) {
+	Info getInfo(String line, String infomation) {
 		Pattern p = Pattern.compile("[0-9\\.]+");
-		Matcher m = p.matcher(str);
+		Matcher m = p.matcher(line);
 
 		int first = 0, second = 0;
 
@@ -261,7 +261,7 @@ public class AnalyseLogLocal {
 				status = InfoStatus.NICE;
 		}
 
-		String[] tmp = str.split(" ");
+		String[] tmp = line.split(" ");
 		String time = tmp[0] + " " + tmp[1];
 
 		return new Info(status, infomation, second, first, time);

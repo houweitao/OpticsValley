@@ -162,13 +162,14 @@ public class KeywordDao {
 		keyword.setUrl(engine.getUrl());
 		keyword.setEngine(engineId);
 		keyword.setSearchNum(1);
+		keyword.setTime(info.getTime());
 
 		String old = jedis.hget(save, jsonKeyword);
 		if (old == null || old.length() == 0) {
-			log.info(keyword.getName() + "is new");
+			log.info(keyword.getName() + "-" + keyword.getName() + "is new");
 			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));
 		} else {
-			log.info(keyword.getName() + "is not new");
+			log.info(keyword.getName() + "-" + keyword.getName() + "is not new");
 			Keyword oldKeyword = JSON.parseObject(old, Keyword.class);
 			keyword.setDocNum(keyword.getDocNum() + oldKeyword.getDocNum());
 			keyword.setNewDocNum(keyword.getNewDocNum() + oldKeyword.getNewDocNum());

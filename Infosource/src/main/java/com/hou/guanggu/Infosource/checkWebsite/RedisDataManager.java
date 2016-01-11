@@ -12,7 +12,7 @@ public class RedisDataManager {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		RedisDataManager manager = new RedisDataManager();
-		manager.init();
+//		manager.init();
 		manager.del();
 	}
 

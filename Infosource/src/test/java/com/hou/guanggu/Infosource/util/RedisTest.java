@@ -2,7 +2,10 @@ package com.hou.guanggu.Infosource.util;
 
 import java.util.List;
 
+import org.junit.Test;
+
 import com.alibaba.fastjson.JSON;
+import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 
 import redis.clients.jedis.Jedis;
@@ -13,11 +16,23 @@ import redis.clients.jedis.Jedis;
  */
 
 public class RedisTest {
+	static JedisFactory factory = new JedisFactory();
+	static Jedis jedis = factory.getInstance();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		JedisFactory factory = new JedisFactory();
-		Jedis jedis = factory.getInstance();
+		System.out.println(jedis.hget("LOG$SAVE$INFOSOURCE", "i-36570"));
+	}
+
+	@Test
+	public void canTransform() {
+		String str = jedis.hget("LOG$SAVE$INFOSOURCE", "i-36570");
+		System.out.println(str);
+		Infosource oldInfosource = JSON.parseObject(str, Infosource.class);
+		System.out.println(oldInfosource.toString());
+	}
+
+	@Test
+	public void basic(Jedis jedis) {
 		jedis.rpush("TEST$JEDIS", JSON.toJSONString("1022"));
 		System.out.println(jedis.lpop("TEST$JEDIS"));
 		jedis.del("TEST$JEDIS");
@@ -36,10 +51,11 @@ public class RedisTest {
 //		for (int i = 4444; i < 4500; i++) {
 //			System.out.println("get size: " + jedis.hget("LOG$KEYWORD", "s-" + i));
 //		}
-		
+
 		System.out.println("get all: " + jedis.hgetAll("LOG$SAVE$INFOSOURCE"));
 	}
 
+	@Test
 	public void testList(Jedis redis) {
 		//hset key field value将哈希表key中的域field的值设为value。   
 		String key = "$LOGS";

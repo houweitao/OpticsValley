@@ -38,6 +38,9 @@ public class AnalyseLog {
 		AnalyseLog analyseLog = new AnalyseLog();
 		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
+		RedisDataManager manager = new RedisDataManager();
+		manager.del();
+
 		List<Info> infoList = new ArrayList<Info>();
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
@@ -59,8 +62,8 @@ public class AnalyseLog {
 			operate.insertByRedis(info);
 		}
 
-		Map<String, String> reportInfosource =jedis.hgetAll(saveInfosource);
-		Map<String, String> reportkeyword =jedis.hgetAll(saveKeyword);
+		Map<String, String> reportInfosource = jedis.hgetAll(saveInfosource);
+		Map<String, String> reportkeyword = jedis.hgetAll(saveKeyword);
 		excel.makeInfosourceExcelStr(reportInfosource);
 		excel.makeKeywordExcelStr(reportkeyword);
 
@@ -84,7 +87,7 @@ public class AnalyseLog {
 						continue;
 					else {
 						if (line.contains("out of")) {
-							Info info = getNormal(line.split(" : ")[1]);
+							Info info = getNormal(line);
 							normaiList.add(info);
 							System.out.println("info: " + info.getInfomation() + "," + info.getStatus() + ";  source: "
 									+ info.getInfomation() + "  doc " + info.getDocNum());
@@ -125,8 +128,9 @@ public class AnalyseLog {
 	}
 
 	//获取正常爬取的组合
-	Info getNormal(String str) {
+	Info getNormal(String line) {
 		String infomation = "";
+		String str = line.split(" : ")[1];
 		Pattern p = Pattern.compile("\\[.*?\\]");// 查找规则公式中大括号以内的字符
 		Matcher m = p.matcher(str);
 		while (m.find()) {// 遍历找到的所有大括号
@@ -134,13 +138,12 @@ public class AnalyseLog {
 //			System.out.println(param.substring(1, param.length() - 1));
 			infomation = param.substring(1, param.length() - 1);
 		}
-
-		return getInfo(str, infomation);
+		return getInfo(line, infomation);
 	}
 
-	Info getInfo(String str, String infomation) {
+	Info getInfo(String line, String infomation) {
 		Pattern p = Pattern.compile("[0-9\\.]+");
-		Matcher m = p.matcher(str);
+		Matcher m = p.matcher(line.split(" : ")[1]);
 
 		int first = 0, second = 0;
 
@@ -167,7 +170,7 @@ public class AnalyseLog {
 				status = InfoStatus.NICE;
 		}
 
-		String[] tmp = str.split(" ");
+		String[] tmp = line.split(" ");
 		String time = tmp[0] + " " + tmp[1];
 
 		return new Info(status, infomation, second, first, time);
