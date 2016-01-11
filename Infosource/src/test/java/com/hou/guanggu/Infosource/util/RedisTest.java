@@ -33,9 +33,11 @@ public class RedisTest {
 
 //		System.out.println(jedis.exists("TEST$JEDIS"));
 
-		for (int i = 4444; i < 20000; i++) {
-			System.out.println("get size: " + jedis.hget("LOG$KEYWORD", "s-" + i));
-		}
+//		for (int i = 4444; i < 4500; i++) {
+//			System.out.println("get size: " + jedis.hget("LOG$KEYWORD", "s-" + i));
+//		}
+		
+		System.out.println("get all: " + jedis.hgetAll("LOG$SAVE$INFOSOURCE"));
 	}
 
 	public void testList(Jedis redis) {

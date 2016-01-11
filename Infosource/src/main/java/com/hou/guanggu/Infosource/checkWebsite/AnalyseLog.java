@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +17,10 @@ import org.mortbay.log.Log;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
 import com.hou.guanggu.Infosource.checkWebsite.util.ExcelUtil;
+import com.hou.guanggu.Infosource.checkWebsite.util.HashMap2Excel;
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
+
+import redis.clients.jedis.Jedis;
 
 /**
  * @author houweitao
@@ -23,9 +29,14 @@ import com.hou.guanggu.Infosource.checkWebsite.util.ExcelUtil;
  */
 
 public class AnalyseLog {
+	private static String saveInfosource = "LOG$SAVE$INFOSOURCE";
+	private static String saveKeyword = "LOG$SAVE$KEYWORD";
+
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
+		Jedis jedis = new JedisFactory().getInstance();
 		AnalyseLog analyseLog = new AnalyseLog();
+		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
 		List<Info> infoList = new ArrayList<Info>();
 		List<Info> normaiList = new ArrayList<Info>();
@@ -39,7 +50,7 @@ public class AnalyseLog {
 		infoList.addAll(normaiList);
 
 //		operate.cleanRedis();
-		
+
 		for (Info info : normaiList) {
 			operate.insertByRedis(info);
 		}
@@ -48,8 +59,10 @@ public class AnalyseLog {
 			operate.insertByRedis(info);
 		}
 
-		ExcelUtil excelUtil = new ExcelUtil();
-		excelUtil.makeExcel();
+		Map<String, String> reportInfosource =jedis.hgetAll(saveInfosource);
+		Map<String, String> reportkeyword =jedis.hgetAll(saveKeyword);
+		excel.makeInfosourceExcelStr(reportInfosource);
+		excel.makeKeywordExcelStr(reportkeyword);
 
 		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
 

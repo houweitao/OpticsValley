@@ -26,7 +26,8 @@ import redis.clients.jedis.Jedis;
 
 public class JedisOperater {
 	private static final Logger log = LoggerFactory.getLogger(JedisOperater.class);
-
+	private String saveInfosource = "LOG$SAVE$INFOSOURCE";
+	private String saveKeyword = "LOG$SAVE$KEYWORD";
 	private static Jedis jedis;
 
 	static {
@@ -61,13 +62,12 @@ public class JedisOperater {
 
 	public void del() {
 		log.info("begin of del");
-		jedis.del("LOG$INFOSOURCE");
-		jedis.del("LOG$KEYWORD");
-		jedis.del("LOG$ENGINE");
+		jedis.del(saveInfosource);
+		jedis.del(saveKeyword);
 		log.info("end of del");
 	}
 
-	HashMap<String, String> getAllinfosource() {
+	public HashMap<String, String> getAllinfosource() {
 		Connection conn = ConnectionFactory.getInstance().makeConnection();
 		Statement st;
 		try {
@@ -86,6 +86,7 @@ public class JedisOperater {
 				infosource.setUrl(url);
 				infosource.setWebsite(website);
 				hm.put("i-" + id, JSON.toJSONString(infosource));
+				System.out.println(JSON.toJSONString(infosource));
 			}
 			conn.close();
 			return hm;
@@ -96,7 +97,7 @@ public class JedisOperater {
 		}
 	}
 
-	HashMap<String, String> getAllkeyword() {
+	public HashMap<String, String> getAllkeyword() {
 		Connection conn = ConnectionFactory.getInstance().makeConnection();
 		Statement st;
 		try {
@@ -121,7 +122,7 @@ public class JedisOperater {
 		}
 	}
 
-	HashMap<String, String> getAllengine() {
+	public HashMap<String, String> getAllengine() {
 		Connection conn = ConnectionFactory.getInstance().makeConnection();
 		Statement st;
 		try {
