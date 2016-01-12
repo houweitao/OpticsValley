@@ -159,12 +159,19 @@ public class KeywordDao {
 		keyword.setNewDocNum(info.getNewDocNum());
 		keyword.setStatus(info.getStatus());
 		keyword.setName(engine.getName());
-		keyword.setUrl(engine.getUrl());
+		keyword.setUrl(engine.getUrl().replace("[keyword]", keyword.getKeyword()));
 		keyword.setEngine(engineId);
 		keyword.setSearchNum(1);
 		keyword.setTime(info.getTime());
 
-		String old = jedis.hget(save, jsonKeyword);
+//		String old = jedis.hget(save, jsonKeyword);
+		String old = null;
+		try {
+			old = jedis.hget(save, jsonKeyword);
+		} catch (Exception e) {
+			old = null;
+		}
+
 		if (old == null || old.length() == 0) {
 			log.info(keyword.getName() + "-" + keyword.getName() + "is new");
 			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));

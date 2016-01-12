@@ -12,8 +12,8 @@ public class RedisDataManager {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		RedisDataManager manager = new RedisDataManager();
-//		manager.init();
-		manager.del();
+		manager.init();
+//		manager.del();
 	}
 
 	void init() {

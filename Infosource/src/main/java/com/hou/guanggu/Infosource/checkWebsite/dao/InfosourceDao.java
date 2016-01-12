@@ -149,15 +149,20 @@ public class InfosourceDao {
 		infosource.setDocNum(info.getDocNum());
 		infosource.setTime(info.getTime());
 		infosource.setStatus(info.getStatus());
+		String old = null;
+		try {
+			old = jedis.hget(save, info.getInfomation());
+		} catch (Exception e) {
+			old = null;
+		}
 
-		String old = jedis.hget(save, info.getInfomation());
 		if (old == null || old.length() == 0) {
-			log.info(infosource.getWebsite()+" is new");
+			log.info(infosource.getWebsite() + " is new");
 			infosource.setSearchNum(1);
 			jedis.hset(save, info.getInfomation(), JSON.toJSONString(infosource));
 		} else {
-			log.info("old infosource: "+old);
-			log.info(infosource.getWebsite()+" is not new");
+			log.info("old infosource: " + old);
+			log.info(infosource.getWebsite() + " is not new");
 			Infosource oldInfosource = JSON.parseObject(old, Infosource.class);
 			infosource.setDocNum(infosource.getDocNum() + oldInfosource.getDocNum());
 			infosource.setNewDocNum(infosource.getNewDocNum() + oldInfosource.getNewDocNum());

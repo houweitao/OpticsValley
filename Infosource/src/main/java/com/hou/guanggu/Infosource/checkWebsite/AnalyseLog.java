@@ -44,7 +44,11 @@ public class AnalyseLog {
 		List<Info> infoList = new ArrayList<Info>();
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
-		analyseLog.readLog(normaiList, abnormaiList);
+		
+		analyseLog.readLog(normaiList, abnormaiList, "spring.log");
+		for (int i = 1; i <= 7; i++) {
+			analyseLog.readLog(normaiList, abnormaiList, "spring.log." + i);
+		}
 
 		System.out.println("abnormal: " + abnormaiList.size());
 		System.out.println("normal: " + normaiList.size());
@@ -56,7 +60,8 @@ public class AnalyseLog {
 
 		for (Info info : normaiList) {
 			if (info != null)
-				operate.insertByRedis(info);
+				if (info.getStatus() == InfoStatus.BAD)
+					operate.insertByRedis(info);
 		}
 
 		for (Info info : abnormaiList) {
@@ -77,9 +82,9 @@ public class AnalyseLog {
 //		}
 	}
 
-	void readLog(List<Info> normaiList, List<Info> abnormaiList) {
+	void readLog(List<Info> normaiList, List<Info> abnormaiList, String filename) {
 		try {
-			FileInputStream is = new FileInputStream("recources/spring.log");
+			FileInputStream is = new FileInputStream("recources/" + filename);
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String line;
