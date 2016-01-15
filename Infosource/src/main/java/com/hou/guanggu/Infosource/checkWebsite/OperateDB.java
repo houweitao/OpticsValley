@@ -41,6 +41,7 @@ public class OperateDB {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				infosourceDao = new InfosourceDao();
 			}
 		} else if (info.getInfomation().charAt(0) == 's') {
 			try {
@@ -48,6 +49,7 @@ public class OperateDB {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				keywordDao = new KeywordDao();
 			}
 		}
 	}
