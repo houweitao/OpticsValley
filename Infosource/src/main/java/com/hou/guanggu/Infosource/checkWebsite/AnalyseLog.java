@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,7 +29,7 @@ import redis.clients.jedis.Jedis;
  * mysql数据库：43分钟；redis：11分钟。
  */
 
-public class AnalyseLog {
+public class AnalyseLog implements Runnable {
 	private static String saveInfosource = "LOG$SAVE$INFOSOURCE";
 	private static String saveKeyword = "LOG$SAVE$KEYWORD";
 
@@ -74,8 +75,9 @@ public class AnalyseLog {
 		excel.makeKeywordExcelStr(reportkeyword);
 
 		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
-
 	}
+	
+	
 
 	LinkedList<String> getLogFiles(String path) {
 		LinkedList<String> logs = new LinkedList<String>();
@@ -191,5 +193,54 @@ public class AnalyseLog {
 		String time = tmp[0] + " " + tmp[1];
 
 		return new Info(status, infomation, second, first, time);
+	}
+
+
+
+	public void run() {
+		// TODO Auto-generated method stub
+
+		long start = System.currentTimeMillis();
+		Jedis jedis = new JedisFactory().getInstance();
+		AnalyseLog analyseLog = new AnalyseLog();
+		HashMap2Excel excel = new HashMap2Excel();
+		OperateDB operate = new OperateDB();
+		RedisDataManager manager = new RedisDataManager();
+		manager.del();
+
+		String path = "recources/";
+		
+		List<Info> normaiList = new ArrayList<Info>();
+		List<Info> abnormaiList = new ArrayList<Info>();
+
+		LinkedList<String> logs = analyseLog.getLogFiles(path);
+
+		for (String fileName : logs) {
+			analyseLog.readLog(normaiList, abnormaiList, fileName);
+		}
+		
+		System.out.println("abnormal: " + abnormaiList.size());
+		System.out.println("normal: " + normaiList.size());
+
+//		operate.cleanRedis();
+
+		for (Info info : normaiList) {
+			if (info != null)
+				if (info.getStatus() == InfoStatus.BAD)
+					operate.insertByRedis(info);
+		}
+
+		for (Info info : abnormaiList) {
+			if (info != null)
+				operate.insertByRedis(info);
+		}
+
+		Map<String, String> reportInfosource = jedis.hgetAll(saveInfosource);
+		Map<String, String> reportkeyword = jedis.hgetAll(saveKeyword);
+		excel.makeInfosourceExcelStr(reportInfosource);
+		excel.makeKeywordExcelStr(reportkeyword);
+
+		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
+	
 	}
 }
