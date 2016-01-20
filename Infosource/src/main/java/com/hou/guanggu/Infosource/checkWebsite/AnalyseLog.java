@@ -1,12 +1,13 @@
 package com.hou.guanggu.Infosource.checkWebsite;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -16,7 +17,6 @@ import org.mortbay.log.Log;
 
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
-import com.hou.guanggu.Infosource.checkWebsite.util.ExcelUtil;
 import com.hou.guanggu.Infosource.checkWebsite.util.HashMap2Excel;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 
@@ -41,20 +41,19 @@ public class AnalyseLog {
 		RedisDataManager manager = new RedisDataManager();
 		manager.del();
 
-		List<Info> infoList = new ArrayList<Info>();
+		String path = "recources/";
+		
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
-		
-		analyseLog.readLog(normaiList, abnormaiList, "spring.log");
-		for (int i = 1; i <= 7; i++) {
-			analyseLog.readLog(normaiList, abnormaiList, "spring.log." + i);
-		}
 
+		LinkedList<String> logs = analyseLog.getLogFiles(path);
+
+		for (String fileName : logs) {
+			analyseLog.readLog(normaiList, abnormaiList, fileName);
+		}
+		
 		System.out.println("abnormal: " + abnormaiList.size());
 		System.out.println("normal: " + normaiList.size());
-
-		infoList.addAll(abnormaiList);
-		infoList.addAll(normaiList);
 
 //		operate.cleanRedis();
 
@@ -76,15 +75,26 @@ public class AnalyseLog {
 
 		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
 
-//		for (Info info : infoList) {
-//			System.out.println("before： " + info.getInfomation() + "  " + info.getNewDocNum() + "," + info.getDocNum());
-//			operate.dealDB(info);
-//		}
+	}
+
+	LinkedList<String> getLogFiles(String path) {
+		LinkedList<String> logs = new LinkedList<String>();
+		File dir = new File(path);
+		File[] files = dir.listFiles();
+		for (File file : files) {
+			if (file.isFile()) {
+				logs.add(path + file.getName());
+			} else {
+				logs.addAll(getLogFiles(path + file.getName() + "/"));
+			}
+		}
+
+		return logs;
 	}
 
 	void readLog(List<Info> normaiList, List<Info> abnormaiList, String filename) {
 		try {
-			FileInputStream is = new FileInputStream("recources/" + filename);
+			FileInputStream is = new FileInputStream(filename);
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String line;

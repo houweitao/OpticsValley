@@ -72,7 +72,7 @@ public class HashMap2Excel {
 
 		// 第六步，将文件存到指定位置  
 		try {
-			FileOutputStream fout = new FileOutputStream("F:/hou/信息源  " + getTime() + ".xls");
+			FileOutputStream fout = new FileOutputStream("result/信息源 " + getTime() + ".xls");
 			wb.write(fout);
 			fout.close();
 		} catch (Exception e) {
@@ -119,7 +119,7 @@ public class HashMap2Excel {
 
 		// 第六步，将文件存到指定位置  
 		try {
-			FileOutputStream fout = new FileOutputStream("F:/hou/信息源  " + getTime() + ".xls");
+			FileOutputStream fout = new FileOutputStream("result/信息源  " + getTime() + ".xls");
 			wb.write(fout);
 			fout.close();
 		} catch (Exception e) {
@@ -169,7 +169,7 @@ public class HashMap2Excel {
 
 		// 第六步，将文件存到指定位置  
 		try {
-			FileOutputStream fout = new FileOutputStream("F:/hou/搜索源  " + getTime() + ".xls");
+			FileOutputStream fout = new FileOutputStream("result/搜索源  " + getTime() + ".xls");
 			wb.write(fout);
 			fout.close();
 		} catch (Exception e) {
@@ -219,7 +219,7 @@ public class HashMap2Excel {
 
 		// 第六步，将文件存到指定位置  
 		try {
-			FileOutputStream fout = new FileOutputStream("F:/hou/搜索源  " + getTime() + ".xls");
+			FileOutputStream fout = new FileOutputStream("result/搜索源  " + getTime() + ".xls");
 			wb.write(fout);
 			fout.close();
 		} catch (Exception e) {

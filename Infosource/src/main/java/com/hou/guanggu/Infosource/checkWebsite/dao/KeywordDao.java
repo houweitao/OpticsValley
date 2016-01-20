@@ -28,7 +28,7 @@ import redis.clients.jedis.Jedis;
 
 public class KeywordDao {
 	private static final Logger log = LoggerFactory.getLogger(KeywordDao.class);
-	private Jedis jedis = new JedisFactory().getInstance();
+//	private Jedis jedis = new JedisFactory().getInstance();
 	private String keyKeyword = "LOG$KEYWORD";
 	private String keyEngine = "LOG$ENGINE";
 	private String save = "LOG$SAVE$KEYWORD";
@@ -94,7 +94,7 @@ public class KeywordDao {
 		}
 	}
 
-	public void persistByRedis(Info info) {
+	public void persistByRedis(Info info,Jedis jedis) {
 		int id = Integer.valueOf(info.getInfomation().split("-")[2]);
 		int engineId = Integer.valueOf(info.getInfomation().split("-")[1]);
 
@@ -145,7 +145,7 @@ public class KeywordDao {
 		}
 	}
 
-	public void persistTotalyByRedis(Info info) throws Exception {
+	public void persistTotalyByRedis(Info info,Jedis jedis) throws Exception {
 		int id = Integer.valueOf(info.getInfomation().split("-")[2]);
 		int engineId = Integer.valueOf(info.getInfomation().split("-")[1]);
 

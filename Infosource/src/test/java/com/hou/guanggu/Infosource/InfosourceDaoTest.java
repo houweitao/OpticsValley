@@ -7,6 +7,9 @@ import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisPoolFactory;
+
+import redis.clients.jedis.Jedis;
 
 /**
  * @author houweitao
@@ -30,7 +33,8 @@ public class InfosourceDaoTest {
 	void persistByRedis() {
 		Info info = new Info(InfoStatus.BAD, "i-1416", 0, 0, "2015-09-23 12:57:58.50");
 		InfosourceDao dao = new InfosourceDao();
-		dao.persistByRedis(info);
+		Jedis jedis=new JedisPoolFactory().getInstance().getResource();
+		dao.persistByRedis(info, jedis);
 	}
 
 	void testUpdate() {

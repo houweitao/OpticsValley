@@ -7,8 +7,10 @@ import com.hou.guanggu.Infosource.checkWebsite.dao.InfosourceDao;
 import com.hou.guanggu.Infosource.checkWebsite.dao.KeywordDao;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisPoolFactory;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 /**
  * @author houweitao
@@ -21,6 +23,7 @@ public class OperateDB {
 	private KeywordDao keywordDao = new KeywordDao();
 	private final String saveInfosource = "LOG$SAVE$INFOSOURCE";
 	private final String saveKeyword = "LOG$SAVE$KEYWORD";
+	private JedisPool pool = new JedisPoolFactory().getInstance();
 
 	//插入数据库。
 	public void insertDB(Info info) {
@@ -35,21 +38,25 @@ public class OperateDB {
 
 	//插入数据库。用redis。
 	public void insertByRedis(Info info) {
+		Jedis jedis = pool.getResource();
+		
 		if (info.getInfomation().charAt(0) == 'i') {
 			try {
-				infosourceDao.persistTotalyByRedis(info);
+				infosourceDao.persistTotalyByRedis(info,jedis);
+				pool.returnResource(jedis);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				infosourceDao = new InfosourceDao();
+				pool.returnBrokenResource(jedis);
 			}
 		} else if (info.getInfomation().charAt(0) == 's') {
 			try {
-				keywordDao.persistTotalyByRedis(info);
+				keywordDao.persistTotalyByRedis(info,jedis);
+				pool.returnResource(jedis);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				keywordDao = new KeywordDao();
+				pool.returnBrokenResource(jedis);
 			}
 		}
 	}
