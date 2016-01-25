@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,13 +22,14 @@ import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
 import com.hou.guanggu.Infosource.checkWebsite.util.HashMap2Excel;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisPoolFactory;
 
 import redis.clients.jedis.Jedis;
 
 /**
  * @author houweitao
  * @date 2015年12月28日 下午2:42:26
- * mysql数据库：43分钟；redis：11分钟。
+ * mysql数据库：43分钟；redis：11分钟。本地10秒。
  */
 
 public class AnalyseLog implements Runnable {
@@ -38,7 +40,7 @@ public class AnalyseLog implements Runnable {
 
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
-		Jedis jedis = new JedisFactory().getInstance();
+		Jedis jedis = new JedisPoolFactory().getInstance().getResource();
 		AnalyseLog analyseLog = new AnalyseLog();
 		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
@@ -46,7 +48,6 @@ public class AnalyseLog implements Runnable {
 		manager.del();
 
 		String path = "recources/";
-
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
 
@@ -201,21 +202,22 @@ public class AnalyseLog implements Runnable {
 
 		long start = System.currentTimeMillis();
 		Jedis jedis = new JedisFactory().getInstance();
-		AnalyseLog analyseLog = new AnalyseLog();
 		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
-		RedisDataManager manager = new RedisDataManager();
-		manager.del();
+//		RedisDataManager manager = new RedisDataManager();
+//		manager.del();
 
-		String path = "recources/";
+		dealNohup();
+
+		String path = "/home/cruser/v4/logs/";
 
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
 
-		LinkedList<String> logs = analyseLog.getLogFiles(path);
+		LinkedList<String> logs = getLogFiles(path);
 
 		for (String fileName : logs) {
-			analyseLog.readLog(normaiList, abnormaiList, fileName);
+			readLog(normaiList, abnormaiList, fileName);
 		}
 
 		System.out.println("abnormal: " + abnormaiList.size());
@@ -240,6 +242,36 @@ public class AnalyseLog implements Runnable {
 		excel.makeKeywordExcelStr(reportkeyword);
 
 		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
+
+	}
+
+	private void dealNohup() {
+		String fileName = "nohup.out";
+		File file = new File(fileName);
+		FileChannel fc = null;
+		if (file.exists() && file.isFile()) {
+			LOGGER.info("nohup.out 存在..");
+			FileInputStream fis;
+			try {
+				fis = new FileInputStream(file);
+				fc = fis.getChannel();
+				if (fc.size() > 500 * 1000000) {//500M
+					fis.close();
+					fc.close();
+					boolean d = file.delete();
+					System.out.println(d);
+					file.createNewFile();
+				}
+				fis.close();
+				fc.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 	}
 }

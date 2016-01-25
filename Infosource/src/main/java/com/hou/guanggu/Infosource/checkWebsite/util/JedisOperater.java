@@ -18,6 +18,7 @@ import com.hou.guanggu.Infosource.checkWebsite.model.Keyword;
 import com.mysql.jdbc.Statement;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 /**
  * @author houweitao
@@ -29,9 +30,11 @@ public class JedisOperater {
 	private String saveInfosource = "LOG$SAVE$INFOSOURCE";
 	private String saveKeyword = "LOG$SAVE$KEYWORD";
 	private static Jedis jedis;
-
+	private static JedisPool pool;
 	static {
-		jedis = new JedisFactory().getInstance();
+		pool=new JedisPoolFactory().getInstance();
+		jedis = pool.getResource();
+//		jedis=new JedisFactory().getInstance();
 	}
 
 	public void refresh() {

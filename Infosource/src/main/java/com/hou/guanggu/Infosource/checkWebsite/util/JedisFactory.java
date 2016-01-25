@@ -16,7 +16,7 @@ public class JedisFactory {
 
 	static {
 		try {
-//			InputStream in = JedisFactory.class.getClassLoader().getResourceAsStream("redis.properties");
+//			InputStream in = JedisFactory.class.getClassLoader().getResourceAsStream("remoteRedis.properties");
 			InputStream in = JedisFactory.class.getClassLoader().getResourceAsStream("localRedis.properties");
 			redisConf.load(in);
 

@@ -4,6 +4,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisOperater;
+import com.hou.guanggu.Infosource.checkWebsite.util.JedisPoolFactory;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
 /**
  * @author houweitao
  * @date 2016年1月20日 上午11:27:07
@@ -11,9 +17,20 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class AnalyseLogScheduler {
+	private static String engine = "LOG$ENGINE";
+	private static String keyword = "LOG$KEYWORD";
+	private static String infosource = "LOG$INFOSOURCE";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		JedisPool pool = new JedisPoolFactory().getInstance();
+		Jedis jedis = pool.getResource();
+
+		if (jedis.hlen(infosource) == null || jedis.hlen(infosource) == 0) {
+			JedisOperater operater = new JedisOperater();
+			operater.init();
+		}
+
 		ScheduledExecutorService service = Executors.newScheduledThreadPool(10);
 
 		//ScheduleAtFixedRate 是基于固定时间间隔进行任务调度，
