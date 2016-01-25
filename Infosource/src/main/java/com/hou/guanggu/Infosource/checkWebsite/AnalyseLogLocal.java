@@ -14,7 +14,6 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -157,7 +156,7 @@ public class AnalyseLogLocal {
 //		ExcelUtil excelUtil = new ExcelUtil();
 //		excelUtil.makeExcel();
 
-		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
+		log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
 
 //		for (Info info : infoList) {
 //			System.out.println("before： " + info.getInfomation() + "  " + info.getNewDocNum() + "," + info.getDocNum());

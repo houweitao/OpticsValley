@@ -14,7 +14,8 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.mortbay.log.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
@@ -30,6 +31,8 @@ import redis.clients.jedis.Jedis;
  */
 
 public class AnalyseLog implements Runnable {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(AnalyseLog.class);
 	private static String saveInfosource = "LOG$SAVE$INFOSOURCE";
 	private static String saveKeyword = "LOG$SAVE$KEYWORD";
 
@@ -43,7 +46,7 @@ public class AnalyseLog implements Runnable {
 		manager.del();
 
 		String path = "recources/";
-		
+
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
 
@@ -52,7 +55,7 @@ public class AnalyseLog implements Runnable {
 		for (String fileName : logs) {
 			analyseLog.readLog(normaiList, abnormaiList, fileName);
 		}
-		
+
 		System.out.println("abnormal: " + abnormaiList.size());
 		System.out.println("normal: " + normaiList.size());
 
@@ -74,10 +77,8 @@ public class AnalyseLog implements Runnable {
 		excel.makeInfosourceExcelStr(reportInfosource);
 		excel.makeKeywordExcelStr(reportkeyword);
 
-		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
+		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
 	}
-	
-	
 
 	LinkedList<String> getLogFiles(String path) {
 		LinkedList<String> logs = new LinkedList<String>();
@@ -195,8 +196,6 @@ public class AnalyseLog implements Runnable {
 		return new Info(status, infomation, second, first, time);
 	}
 
-
-
 	public void run() {
 		// TODO Auto-generated method stub
 
@@ -209,7 +208,7 @@ public class AnalyseLog implements Runnable {
 		manager.del();
 
 		String path = "recources/";
-		
+
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
 
@@ -218,7 +217,7 @@ public class AnalyseLog implements Runnable {
 		for (String fileName : logs) {
 			analyseLog.readLog(normaiList, abnormaiList, fileName);
 		}
-		
+
 		System.out.println("abnormal: " + abnormaiList.size());
 		System.out.println("normal: " + normaiList.size());
 
@@ -240,7 +239,7 @@ public class AnalyseLog implements Runnable {
 		excel.makeInfosourceExcelStr(reportInfosource);
 		excel.makeKeywordExcelStr(reportkeyword);
 
-		Log.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
-	
+		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
+
 	}
 }
