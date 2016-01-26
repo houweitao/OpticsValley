@@ -39,7 +39,7 @@ public class AnalyseLogScheduler {
 		long initialDelay1 = 1;
 		long period1 = 40 * 60;
 		// 从现在开始1秒钟之后，每隔 period1 秒钟执行一次job1/这里是40分钟。
-		service.scheduleAtFixedRate(new AnalyseLog(), initialDelay1, period1, TimeUnit.SECONDS);
+		service.scheduleWithFixedDelay(new AnalyseLog(), initialDelay1, period1, TimeUnit.SECONDS);
 
 //		long initialDelay2 = 2;
 //		long delay2 = 2;
