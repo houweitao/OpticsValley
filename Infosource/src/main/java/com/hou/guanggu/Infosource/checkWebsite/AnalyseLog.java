@@ -25,6 +25,7 @@ import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisPoolFactory;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 /**
  * @author houweitao
@@ -37,6 +38,7 @@ public class AnalyseLog implements Runnable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AnalyseLog.class);
 	private static String saveInfosource = "LOG$SAVE$INFOSOURCE";
 	private static String saveKeyword = "LOG$SAVE$KEYWORD";
+	private JedisPool pool = new JedisPoolFactory().getInstance();
 
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
@@ -199,9 +201,8 @@ public class AnalyseLog implements Runnable {
 
 	public void run() {
 		// TODO Auto-generated method stub
-
 		long start = System.currentTimeMillis();
-		Jedis jedis = new JedisFactory().getInstance();
+		Jedis jedis = pool.getResource();
 		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
 //		RedisDataManager manager = new RedisDataManager();
@@ -235,14 +236,48 @@ public class AnalyseLog implements Runnable {
 			if (info != null)
 				operate.insertByRedis(info);
 		}
+		makeExcel(jedis);
 
-		Map<String, String> reportInfosource = jedis.hgetAll(saveInfosource);
-		Map<String, String> reportkeyword = jedis.hgetAll(saveKeyword);
-		excel.makeInfosourceExcelStr(reportInfosource);
-		excel.makeKeywordExcelStr(reportkeyword);
+		try {
+			pool.returnResource(jedis);
+		} catch (Exception e) {
+			LOGGER.info("can not return");
+			try {
+				pool.returnBrokenResource(jedis);
+			} catch (Exception e1) {
+				LOGGER.info("can not return broken");
+			}
+		}
 
 		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
+	}
 
+	private void makeExcel(Jedis jedis) {
+		HashMap2Excel excel = new HashMap2Excel();
+		int tryNum = 1;
+		boolean success = false;
+		while (tryNum < 10 && success == false) {
+			LOGGER.info("第 " + tryNum + " 次");
+			try {
+				Map<String, String> reportInfosource = jedis.hgetAll(saveInfosource);
+				Map<String, String> reportkeyword = jedis.hgetAll(saveKeyword);
+				excel.makeInfosourceExcelStr(reportInfosource);
+				excel.makeKeywordExcelStr(reportkeyword);
+				success = true;
+				LOGGER.info("made excel success!");
+			} catch (Exception e) {
+				e.printStackTrace();
+				pool.returnBrokenResource(jedis);
+				jedis = pool.getResource();
+			}
+			tryNum++;
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void dealNohup() {
