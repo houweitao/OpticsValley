@@ -7,7 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.channels.FileChannel;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
+import com.hou.guanggu.Infosource.checkWebsite.util.AppendFile;
 import com.hou.guanggu.Infosource.checkWebsite.util.CopyFileUtil;
 import com.hou.guanggu.Infosource.checkWebsite.util.HashMap2Excel;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
@@ -40,6 +44,7 @@ public class AnalyseLog implements Runnable {
 	private static String saveInfosource = "LOG$SAVE$INFOSOURCE";
 	private static String saveKeyword = "LOG$SAVE$KEYWORD";
 	private JedisPool pool = new JedisPoolFactory().getInstance();
+	private int runTime = 1;
 
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
@@ -200,6 +205,7 @@ public class AnalyseLog implements Runnable {
 		return new Info(status, infomation, second, first, time);
 	}
 
+	//供调度任务来调度
 	public void run() {
 		// TODO Auto-generated method stub
 		long start = System.currentTimeMillis();
@@ -216,7 +222,7 @@ public class AnalyseLog implements Runnable {
 
 		String path = "/home/cruser/v4/logs/";
 		String newPath = "/home/cruser/Infosource/logs/";
-		
+
 		copyFileutil.copyDirectory(path, newPath, true);
 
 		List<Info> normaiList = new ArrayList<Info>();
@@ -258,7 +264,33 @@ public class AnalyseLog implements Runnable {
 
 		pool.close();
 
-		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
+		long timeCost = (System.currentTimeMillis() - start) / 1000;
+		record(runTime++, timeCost, abnormaiList.size(), normaiList.size());
+		LOGGER.info("耗时： " + timeCost + " 秒");
+	}
+
+	//记录每一次的运行情况
+	private void record(int runTime, long timeCost, int abnormal, int normal) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss EE");
+		String recordPath = "/home/cruser/Infosource/record.log";
+		String conent = "第 " + runTime + " 次运行，正常数量： " + normal + " 异常数量： " + abnormal + " 耗时： " + timeCost + " 秒"
+				+ "  time@" + df.format(new Date()) + "\r\n";
+		File file = new File(recordPath);
+		try {
+			if (!file.exists() && file.createNewFile()) {
+				LOGGER.info("Create file successed");
+			}
+			
+			if(runTime==1)
+				conent = df.format(new Date()) + "\r\n" + conent;
+			
+			AppendFile app = new AppendFile();
+			app.method1(recordPath, conent);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void makeExcel(Jedis jedis) {
@@ -289,6 +321,7 @@ public class AnalyseLog implements Runnable {
 		}
 	}
 
+	//貌似并没有什么卵用。删除之后就再也不会往里面写了。暂时没有好办法解决。那种定期清理日志的方法不知道是什么。
 	private void dealNohup() {
 		String fileName = "nohup.out";
 		File file = new File(fileName);
