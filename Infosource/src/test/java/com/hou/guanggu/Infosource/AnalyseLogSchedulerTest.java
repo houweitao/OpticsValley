@@ -27,12 +27,15 @@ public class AnalyseLogSchedulerTest {
 
 }
 
+
+//这里输出的testCount是递增的。说明schedule是单例的。
 class test implements Runnable {
+	int testCount = 1;
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		System.out.println("sss");
+		System.out.println(testCount++);
 //		System.exit(0);
 		return;
 	}

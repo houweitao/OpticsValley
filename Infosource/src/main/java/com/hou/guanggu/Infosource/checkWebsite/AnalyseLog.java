@@ -202,6 +202,8 @@ public class AnalyseLog implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		long start = System.currentTimeMillis();
+		//shchedule是单例的，这里重新生成一个会比较好？直观上。2016年1月27日10:20:01
+		pool=new JedisPoolFactory().getInstance();
 		Jedis jedis = pool.getResource();
 		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
@@ -248,6 +250,8 @@ public class AnalyseLog implements Runnable {
 				LOGGER.info("can not return broken");
 			}
 		}
+		
+		pool.close();
 
 		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
 	}
