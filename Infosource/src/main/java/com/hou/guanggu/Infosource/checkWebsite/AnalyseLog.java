@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.InfoStatus;
+import com.hou.guanggu.Infosource.checkWebsite.util.CopyFileUtil;
 import com.hou.guanggu.Infosource.checkWebsite.util.HashMap2Excel;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisPoolFactory;
@@ -83,7 +84,7 @@ public class AnalyseLog implements Runnable {
 		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
 	}
 
-	LinkedList<String> getLogFiles(String path) {
+	public LinkedList<String> getLogFiles(String path) {
 		LinkedList<String> logs = new LinkedList<String>();
 		File dir = new File(path);
 		File[] files = dir.listFiles();
@@ -203,21 +204,25 @@ public class AnalyseLog implements Runnable {
 		// TODO Auto-generated method stub
 		long start = System.currentTimeMillis();
 		//shchedule是单例的，这里重新生成一个会比较好？直观上。2016年1月27日10:20:01
-		pool=new JedisPoolFactory().getInstance();
+		pool = new JedisPoolFactory().getInstance();
 		Jedis jedis = pool.getResource();
-		HashMap2Excel excel = new HashMap2Excel();
+//		HashMap2Excel excel = new HashMap2Excel();
 		OperateDB operate = new OperateDB();
+		CopyFileUtil copyFileutil = new CopyFileUtil();
 //		RedisDataManager manager = new RedisDataManager();
 //		manager.del();
 
 		dealNohup();
 
 		String path = "/home/cruser/v4/logs/";
+		String newPath = "/home/cruser/Infosource/logs/";
+		
+		copyFileutil.copyDirectory(path, newPath, true);
 
 		List<Info> normaiList = new ArrayList<Info>();
 		List<Info> abnormaiList = new ArrayList<Info>();
 
-		LinkedList<String> logs = getLogFiles(path);
+		LinkedList<String> logs = getLogFiles(newPath);
 
 		for (String fileName : logs) {
 			readLog(normaiList, abnormaiList, fileName);
@@ -250,7 +255,7 @@ public class AnalyseLog implements Runnable {
 				LOGGER.info("can not return broken");
 			}
 		}
-		
+
 		pool.close();
 
 		LOGGER.info("耗时： " + (System.currentTimeMillis() - start) / 1000 + " 秒");
