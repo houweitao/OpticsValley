@@ -39,10 +39,10 @@ public class OperateDB {
 	//插入数据库。用redis。
 	public void insertByRedis(Info info) {
 		Jedis jedis = pool.getResource();
-		
+
 		if (info.getInfomation().charAt(0) == 'i') {
 			try {
-				infosourceDao.persistTotalyByRedis(info,jedis);
+				infosourceDao.persistTotalyByRedis(info, jedis);
 				pool.returnResource(jedis);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -51,7 +51,30 @@ public class OperateDB {
 			}
 		} else if (info.getInfomation().charAt(0) == 's') {
 			try {
-				keywordDao.persistTotalyByRedis(info,jedis);
+				keywordDao.persistTotalyByRedis(info, jedis);
+				pool.returnResource(jedis);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				pool.returnBrokenResource(jedis);
+			}
+		}
+	}
+
+	public void delNormal(Info info) {
+		Jedis jedis = pool.getResource();
+		if (info.getInfomation().charAt(0) == 'i') {
+			try {
+				infosourceDao.delInfosource(info, jedis);
+				pool.returnResource(jedis);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				pool.returnBrokenResource(jedis);
+			}
+		} else if (info.getInfomation().charAt(0) == 's') {
+			try {
+				keywordDao.delKeyword(info, jedis);
 				pool.returnResource(jedis);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

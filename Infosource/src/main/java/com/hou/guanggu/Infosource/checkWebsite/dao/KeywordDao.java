@@ -1,8 +1,13 @@
 package com.hou.guanggu.Infosource.checkWebsite.dao;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.fastdb.DB;
@@ -15,7 +20,9 @@ import com.alibaba.fastjson.JSON;
 import com.hou.guanggu.Infosource.checkWebsite.ConnectionFactory;
 import com.hou.guanggu.Infosource.checkWebsite.model.Engine;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
+import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
 import com.hou.guanggu.Infosource.checkWebsite.model.Keyword;
+import com.hou.guanggu.Infosource.checkWebsite.util.AppendFile;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 import com.mysql.jdbc.Statement;
 
@@ -32,6 +39,7 @@ public class KeywordDao {
 	private String keyKeyword = "LOG$KEYWORD";
 	private String keyEngine = "LOG$ENGINE";
 	private String save = "LOG$SAVE$KEYWORD";
+	private DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss EE");
 	DBQuery nativeQuery = DB.createNativeQuery("select * from `wdyq_keywords_copy` where `id`=?");
 	DBQuery updateQuery = DB.createNativeQuery("update `wdyq_keywords_copy` set `freq` =? where `id`=?");
 
@@ -94,7 +102,7 @@ public class KeywordDao {
 		}
 	}
 
-	public void persistByRedis(Info info,Jedis jedis) {
+	public void persistByRedis(Info info, Jedis jedis) {
 		int id = Integer.valueOf(info.getInfomation().split("-")[2]);
 		int engineId = Integer.valueOf(info.getInfomation().split("-")[1]);
 
@@ -145,9 +153,11 @@ public class KeywordDao {
 		}
 	}
 
-	public void persistTotalyByRedis(Info info,Jedis jedis) throws Exception {
+	public void persistTotalyByRedis(Info info, Jedis jedis) throws Exception {
 		int id = Integer.valueOf(info.getInfomation().split("-")[2]);
 		int engineId = Integer.valueOf(info.getInfomation().split("-")[1]);
+
+		String keyInfo = "s-" + id;
 
 		String jsonKeyword = jedis.hget(keyKeyword, "s-" + id);
 		String jsonEngine = jedis.hget(keyEngine, "e-" + engineId);
@@ -167,14 +177,14 @@ public class KeywordDao {
 //		String old = jedis.hget(save, jsonKeyword);
 		String old = null;
 		try {
-			old = jedis.hget(save, jsonKeyword);
+			old = jedis.hget(save, keyInfo);
 		} catch (Exception e) {
 			old = null;
 		}
 
 		if (old == null || old.length() == 0) {
 			log.info(keyword.getName() + "-" + keyword.getName() + "is new");
-			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));
+			jedis.hset(save, keyInfo, JSON.toJSONString(keyword));
 		} else {
 			log.info("old keyword: " + old);
 			log.info(keyword.getName() + "-" + keyword.getName() + " is not new");
@@ -182,11 +192,42 @@ public class KeywordDao {
 			keyword.setDocNum(keyword.getDocNum() + oldKeyword.getDocNum());
 			keyword.setNewDocNum(keyword.getNewDocNum() + oldKeyword.getNewDocNum());
 			keyword.setSearchNum(oldKeyword.getSearchNum() + 1);
-			jedis.hset(save, jsonKeyword, JSON.toJSONString(keyword));
+			jedis.hset(save, keyInfo, JSON.toJSONString(keyword));
 		}
 
 		jedis.quit();
 		jedis.disconnect();
+	}
+
+	public void delKeyword(Info info, Jedis jedis) {
+//		jedis.hdel(save, info.getInfomation());
+
+		if (jedis.hexists(save, info.getInfomation())) {
+			Keyword keyword = JSON.parseObject(jedis.hget(save, info.getInfomation()), Keyword.class);
+			jedis.hdel(save, info.getInfomation());
+			fixNormal(info.getInfomation() + ", " + keyword.getKeyword() + ", " + keyword.getEngine() + ", "
+					+ keyword.getUrl());
+
+			log.info("del " + info.getInfomation());
+		}
+	}
+
+	private void fixNormal(String info) {
+		String recordPath = "fixNormal.log";
+		String conent = "修正 @" + df.format(new Date()) + "  " + info + "\r\n";
+		File file = new File(recordPath);
+		try {
+			if (!file.exists() && file.createNewFile()) {
+				log.info("Create file successed");
+			}
+
+			AppendFile app = new AppendFile();
+			app.method1(recordPath, conent);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private DBRow isNew(Keyword keyword) {

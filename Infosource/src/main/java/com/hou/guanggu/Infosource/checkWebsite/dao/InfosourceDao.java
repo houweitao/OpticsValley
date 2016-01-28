@@ -2,6 +2,9 @@ package com.hou.guanggu.Infosource.checkWebsite.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.fastdb.DB;
@@ -14,8 +17,11 @@ import com.alibaba.fastjson.JSON;
 import com.hou.guanggu.Infosource.checkWebsite.ConnectionFactory;
 import com.hou.guanggu.Infosource.checkWebsite.model.Info;
 import com.hou.guanggu.Infosource.checkWebsite.model.Infosource;
+import com.hou.guanggu.Infosource.checkWebsite.util.AppendFile;
 import com.hou.guanggu.Infosource.checkWebsite.util.JedisFactory;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.sql.Connection;
 import com.mysql.jdbc.Statement;
@@ -32,6 +38,7 @@ public class InfosourceDao {
 //	private Jedis jedis = new JedisFactory().getInstance();
 	private String key = "LOG$INFOSOURCE";
 	private String save = "LOG$SAVE$INFOSOURCE";
+	private DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss EE");
 	private DBQuery nativeQuery = DB.createNativeQuery("select * from `wdyq_infosource_copy` where `id`=?");
 	private DBQuery updateQuery = DB.createNativeQuery("update `wdyq_infosource_copy` set `freq` =? where `id`=?");
 
@@ -96,7 +103,7 @@ public class InfosourceDao {
 
 	}
 
-	public void persistByRedis(Info info,Jedis jedis) {
+	public void persistByRedis(Info info, Jedis jedis) {
 		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
 
 		String json = jedis.hget(key, info.getInfomation());
@@ -140,7 +147,7 @@ public class InfosourceDao {
 
 	}
 
-	public void persistTotalyByRedis(Info info,Jedis jedis) throws Exception {
+	public void persistTotalyByRedis(Info info, Jedis jedis) throws Exception {
 //		int id = Integer.valueOf(info.getInfomation().split("-")[1]);
 		String json = jedis.hget(key, info.getInfomation());
 		Infosource infosource = JSON.parseObject(json, Infosource.class);
@@ -168,6 +175,34 @@ public class InfosourceDao {
 			infosource.setNewDocNum(infosource.getNewDocNum() + oldInfosource.getNewDocNum());
 			infosource.setSearchNum(oldInfosource.getSearchNum() + 1);
 			jedis.hset(save, info.getInfomation(), JSON.toJSONString(infosource));
+		}
+	}
+
+	public void delInfosource(Info info, Jedis jedis) {
+//		jedis.hdel(save, info.getInfomation());
+
+		if (jedis.hdel(save, info.getInfomation()) == 1) {
+			Infosource infosource = JSON.parseObject(jedis.hget(key, info.getInfomation()), Infosource.class);
+			fixNormal(info.getInfomation() + ", " + infosource.getWebsite() + ", " + infosource.getUrl());
+			log.info("del " + info.getInfomation());
+		}
+	}
+
+	private void fixNormal(String info) {
+		String recordPath = "fixNormal.log";
+		String conent = "修正 @" + df.format(new Date()) + "  " + info + "\r\n";
+		File file = new File(recordPath);
+		try {
+			if (!file.exists() && file.createNewFile()) {
+				log.info("Create file successed");
+			}
+
+			AppendFile app = new AppendFile();
+			app.method1(recordPath, conent);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -71,9 +71,13 @@ public class AnalyseLog implements Runnable {
 //		operate.cleanRedis();
 
 		for (Info info : normaiList) {
-			if (info != null)
+			if (info != null) {
 				if (info.getStatus() == InfoStatus.BAD)
 					operate.insertByRedis(info);
+				else {
+					operate.delNormal(info);
+				}
+			}
 		}
 
 		for (Info info : abnormaiList) {
@@ -221,7 +225,7 @@ public class AnalyseLog implements Runnable {
 		dealNohup();
 
 		String path = "/home/cruser/v4/logs/";
-		String newPath = "/home/cruser/Infosource/logs/";
+		String newPath = "logs/";
 
 		copyFileutil.copyDirectory(path, newPath, true);
 
@@ -240,9 +244,13 @@ public class AnalyseLog implements Runnable {
 //		operate.cleanRedis();
 
 		for (Info info : normaiList) {
-			if (info != null)
+			if (info != null) {
 				if (info.getStatus() == InfoStatus.BAD)
 					operate.insertByRedis(info);
+				else {
+					operate.delNormal(info);
+				}
+			}
 		}
 
 		for (Info info : abnormaiList) {
@@ -252,14 +260,9 @@ public class AnalyseLog implements Runnable {
 		makeExcel(jedis);
 
 		try {
-			pool.returnResource(jedis);
+			pool.returnBrokenResource(jedis);
 		} catch (Exception e) {
 			LOGGER.info("can not return");
-			try {
-				pool.returnBrokenResource(jedis);
-			} catch (Exception e1) {
-				LOGGER.info("can not return broken");
-			}
 		}
 
 		pool.close();
@@ -272,7 +275,7 @@ public class AnalyseLog implements Runnable {
 	//记录每一次的运行情况
 	private void record(int runTime, long timeCost, int abnormal, int normal) {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss EE");
-		String recordPath = "/home/cruser/Infosource/record.log";
+		String recordPath = "record.log";
 		String conent = "第 " + runTime + " 次运行，正常数量： " + normal + " 异常数量： " + abnormal + " 耗时： " + timeCost + " 秒"
 				+ "  time@" + df.format(new Date()) + "\r\n";
 		File file = new File(recordPath);
@@ -280,10 +283,10 @@ public class AnalyseLog implements Runnable {
 			if (!file.exists() && file.createNewFile()) {
 				LOGGER.info("Create file successed");
 			}
-			
-			if(runTime==1)
+
+			if (runTime == 1)
 				conent = df.format(new Date()) + "\r\n" + conent;
-			
+
 			AppendFile app = new AppendFile();
 			app.method1(recordPath, conent);
 
