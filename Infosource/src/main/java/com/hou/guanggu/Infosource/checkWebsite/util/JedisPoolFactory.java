@@ -14,7 +14,7 @@ public class JedisPoolFactory {
 	public JedisPoolFactory() {
 		JedisPoolConfig config = new JedisPoolConfig();
 //		config.setMaxIdle(40);
-		pool = new JedisPool(config, "localhost", 6379);
+		pool = new JedisPool(config, "localhost", 6379, 100000);//最后一个参数是超时时间。读取的时候。默认是2秒。
 	}
 
 	public JedisPool getInstance() {
