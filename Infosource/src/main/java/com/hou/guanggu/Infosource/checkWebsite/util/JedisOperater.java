@@ -76,7 +76,7 @@ public class JedisOperater {
 		Statement st;
 		try {
 			st = (Statement) conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from wdyq_infosource");
+			ResultSet rs = st.executeQuery("select * from wdyq_infosource where status=1");
 
 			HashMap<String, String> hm = new HashMap<String, String>();
 
@@ -107,7 +107,7 @@ public class JedisOperater {
 		try {
 			HashMap<String, String> hm = new HashMap<String, String>();
 			st = (Statement) conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from wdyq_keywords");
+			ResultSet rs = st.executeQuery("select * from wdyq_keywords where status = 1");
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String keyword = rs.getString("keyword");
