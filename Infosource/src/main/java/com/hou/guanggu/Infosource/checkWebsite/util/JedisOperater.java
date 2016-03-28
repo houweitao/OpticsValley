@@ -31,8 +31,9 @@ public class JedisOperater {
 	private String saveKeyword = "LOG$SAVE$KEYWORD";
 	private static Jedis jedis;
 	private static JedisPool pool;
+
 	static {
-		pool=new JedisPoolFactory().getInstance();
+		pool = new JedisPoolFactory().getInstance();
 		jedis = pool.getResource();
 //		jedis=new JedisFactory().getInstance();
 	}
@@ -111,9 +112,11 @@ public class JedisOperater {
 				int id = rs.getInt("id");
 				String keyword = rs.getString("keyword");
 				int freq = rs.getInt("freq");
+				int engine = rs.getInt("engine");
 				Keyword key = new Keyword(id);
 				key.setFreq(freq);
 				key.setKeyword(keyword);
+				key.setEngine(engine);
 				hm.put("s-" + id, JSON.toJSONString(key));
 			}
 			conn.close();
