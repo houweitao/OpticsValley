@@ -83,11 +83,13 @@ public class JedisOperater {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String url = rs.getString("url");
+				String websiteplate = rs.getString("websiteplate");
 				String website = rs.getString("website");
 				int freq = rs.getInt("freq");
 				Infosource infosource = new Infosource(id);
 				infosource.setFreq(freq);
 				infosource.setUrl(url);
+				infosource.setWebsiteplate(websiteplate);
 				infosource.setWebsite(website);
 				hm.put("i-" + id, JSON.toJSONString(infosource));
 				System.out.println(JSON.toJSONString(infosource));
@@ -134,7 +136,7 @@ public class JedisOperater {
 		try {
 			HashMap<String, String> hm = new HashMap<String, String>();
 			st = (Statement) conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from wdyq_searchengine");
+			ResultSet rs = st.executeQuery("select * from wdyq_searchengine where searchStatus = 1");
 			while (rs.next()) {
 				int engineId = rs.getInt("id");
 				String name = rs.getString("name");

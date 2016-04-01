@@ -10,6 +10,7 @@ public class Infosource {
 	private int freq;
 	private String url;
 	private String website;
+	private String websiteplate;
 
 	private int searchNum;
 	private int newDocNum;
@@ -44,7 +45,8 @@ public class Infosource {
 	}
 
 	public String toString() {
-		return this.id + "," + this.url + "," + this.website + "," + this.status + "," + this.time;
+		return this.id + "," + this.url + "," + this.website + "," + this.websiteplate + "," + this.status + ","
+				+ this.time;
 	}
 
 	public String getTime() {
@@ -117,5 +119,13 @@ public class Infosource {
 
 	public void setStatus(InfoStatus status) {
 		this.status = status;
+	}
+
+	public String getWebsiteplate() {
+		return websiteplate;
+	}
+
+	public void setWebsiteplate(String websiteplate) {
+		this.websiteplate = websiteplate;
 	}
 }
